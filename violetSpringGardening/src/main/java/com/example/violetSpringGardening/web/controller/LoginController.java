@@ -3,6 +3,7 @@ package com.example.violetSpringGardening.web.controller;
 import com.example.violetSpringGardening.domain.security.JWTAuthtenticationConfig;
 import com.example.violetSpringGardening.persistence.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,7 @@ public class LoginController {
     @Autowired
     JWTAuthtenticationConfig jwtAuthtenticationConfig;
 
+    @CrossOrigin(origins = "http://127.0.0.1:5500")
     @PostMapping("login")
     public User login(
             @RequestParam("newUser") String username,

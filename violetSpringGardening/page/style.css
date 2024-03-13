@@ -95,7 +95,7 @@ body{
 }
 
 
-#btnRegister {
+.btn-formulary {
     font-size: 19px;
     text-align: center;
     width: 100%;
@@ -108,7 +108,7 @@ body{
     transition: background-color 0.3s ease; /* Efecto de transición en hover */
 }
 
-#btnRegister:hover {
+.btn-formulary:hover {
     background-color: #24780f;
     color: rgb(241, 238, 255); 
 }
