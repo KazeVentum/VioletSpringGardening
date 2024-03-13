@@ -12,22 +12,22 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AdminServiceImpl implements AdminService {
+public class ServiceInterfaceImpl implements ServiceInterface <Admin>{
 
     private final AdminRepository adminRepository;
 
     @Autowired
-    public AdminServiceImpl(AdminRepository adminRepository){
+    public ServiceInterfaceImpl(AdminRepository adminRepository){
         this.adminRepository = adminRepository;
     }
 
     @Override
-    public List<Admin> getAllAdmins() {
+    public List<Admin> getAll() {
         return adminRepository.findAll();
     }
 
     @Override
-    public ResponseEntity<Admin> getAdminById(Object id) {
+    public ResponseEntity<Admin> getById(Object id) {
         try{
             Long  newId = Long.parseLong(id.toString());
             Admin optionalAdmin = adminRepository.findById(newId)
@@ -40,13 +40,13 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public ResponseEntity<Admin> saveAdmin(Admin adminSave) {
+    public ResponseEntity<Admin> save(Admin adminSave) {
         adminRepository.save(adminSave);
         return ResponseEntity.ok(adminSave);
     }
 
     @Override
-    public ResponseEntity<Void> deleteAdmin(Long id) {
+    public ResponseEntity<Void> delete(Long id) {
         if (adminRepository.existsById(id)) {
             adminRepository.deleteById(id);
             return ResponseEntity.noContent().build();
@@ -56,7 +56,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public ResponseEntity<Admin> updateAdmin(Object id, Admin adminUpdate) {
+    public ResponseEntity<Admin> update(Object id, Admin adminUpdate) {
         try{
             Long newId = Long.parseLong(id.toString());
             Optional<Admin> optionalAdmin = adminRepository.findById(newId);
