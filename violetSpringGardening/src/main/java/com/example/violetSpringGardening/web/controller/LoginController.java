@@ -1,4 +1,4 @@
-package com.example.PostSocial.web.controller;
+package com.example.violetSpringGardening.web.controller;
 
 import com.example.violetSpringGardening.domain.security.JWTAuthtenticationConfig;
 import com.example.violetSpringGardening.persistence.entity.User;

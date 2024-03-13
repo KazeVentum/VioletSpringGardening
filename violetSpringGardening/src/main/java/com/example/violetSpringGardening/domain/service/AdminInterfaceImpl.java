@@ -12,12 +12,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ServiceInterfaceImpl implements ServiceInterface <Admin>{
+public class AdminInterfaceImpl implements ServiceInterface <Admin>{
 
     private final AdminRepository adminRepository;
 
     @Autowired
-    public ServiceInterfaceImpl(AdminRepository adminRepository){
+    public AdminInterfaceImpl(AdminRepository adminRepository){
         this.adminRepository = adminRepository;
     }
 
