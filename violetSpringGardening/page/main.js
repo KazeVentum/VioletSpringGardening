@@ -1,4 +1,6 @@
-document.getElementById("btnRegister").addEventListener("submit", async function(event){
+
+
+document.getElementById("btnRegister").addEventListener("click", async function(event){
     event.preventDefault(); // Evita el envío del formulario por defecto
 
     // Obtener los valores de los campos de entrada
@@ -11,6 +13,8 @@ document.getElementById("btnRegister").addEventListener("submit", async function
         password: password
     };
 
+    console.log(formData);
+
     // Configurar la solicitud POST
     await fetch('http://localhost:8080/register', {
         method: 'POST',
@@ -22,7 +26,6 @@ document.getElementById("btnRegister").addEventListener("submit", async function
     .then(response => response.json())
     .then(data => {
         console.log('Success:', data);
-        window.location.reload();
         alert("Successful Register")
         // Aquí puedes realizar cualquier acción adicional después de enviar los datos
     })

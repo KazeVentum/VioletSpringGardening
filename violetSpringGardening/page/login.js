@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const token = data.token;
                 localStorage.setItem('jwtToken', token);
                 console.log('Token obtenido:', token);
-                // Redirigir a otra página, mostrar un mensaje de éxito, etc.
             })
             .catch(error => {
                 console.error('Error al obtener el token:', error);
