@@ -1,0 +1,163 @@
+body{
+    background-color: rgb(39, 39, 44) !important;
+    font-family: "calibri";
+}
+.header {
+    background-color: #0d0a0a; /* Color de fondo del header */
+    color: #bcd5fd; /* Color del texto */
+    text-align: center; /* Centra el texto horizontalmente */
+    padding: 20px 0; /* Añade espacio interno alrededor del contenido del header */
+}
+
+.title {
+    margin: 0; /* Elimina el margen por defecto */
+}
+
+
+.controls{
+    width: 100%;
+    color: white;
+    background-color: #24303c;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    border: 1px solid #1f53c5;
+    font-size: 18px;
+}
+
+.formDiv{
+    margin-top: 2px;
+    width: 400px;
+    height: 450px;
+    background-color: #0d0a0a9a;
+    backdrop-filter: blur(15px);
+    background-size: 400% 400%;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 7px 13px 37px #464646;
+    
+}
+
+
+.formDiv h4{  
+    margin-top: 80px; 
+    text-align: center;
+    color: white;
+    font-size: 22px;
+    margin-bottom: 20px
+}
+
+.formDiv ::placeholder{
+    color: rgba(255, 255, 255, 0.242);
+}
+
+
+.controlsTwo{
+    color: white;
+    width: 100%;
+    background-color: #7782ff34;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    border: 1px solid #1f53c5;
+    font-size: 18px;
+}
+
+
+
+
+#forms {
+    margin-top: 105px;
+    background: linear-gradient(45deg, #f5f7fa 0%, #6e747f 81%);
+    background-size: 400% 400%;
+    position: relative;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 7px 13px 37px #100e2f;
+    animation: gradiente 5s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+@keyframes gradiente {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+    
+}
+
+
+.btn-formulary {
+    font-size: 19px;
+    text-align: center;
+    width: 100%;
+    margin-top: 20px; /* Ajusta según sea necesario */
+    padding: 10px 20px;
+    border: none;
+    background-color: #3090e4; /* Color de fondo */
+    color: rgb(33, 32, 32);
+    border-radius: 5px;
+    transition: background-color 0.3s ease; /* Efecto de transición en hover */
+}
+
+.btn-formulary:hover {
+    background-color: #24780f;
+    color: rgb(241, 238, 255); 
+}
+
+
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.container > div {
+    margin: 0 10px;
+}
+
+
+
+@media screen and (max-width: 1000px) {
+    .formGroup{
+        padding: 5px;
+    }
+}
+
+#showDatax {
+    background: linear-gradient(45deg, #f5f7fa 0%, #6e747f 81%);
+    background-size: 400% 400%;
+    margin-top: 25px;
+    position: relative;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 7px 13px 37px #100e2f;
+    animation: gradiente 5s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+@keyframes gradiente {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+    
+}
+  
+
