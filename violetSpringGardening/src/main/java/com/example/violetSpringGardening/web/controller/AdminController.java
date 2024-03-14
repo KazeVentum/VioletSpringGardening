@@ -2,7 +2,6 @@ package com.example.violetSpringGardening.web.controller;
 
 
 import com.example.violetSpringGardening.domain.service.AdminInterfaceImpl;
-import com.example.violetSpringGardening.domain.service.ServiceInterface;
 import com.example.violetSpringGardening.persistence.entity.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.example.PostSocial.domain.security;
+package com.example.violetSpringGardening.domain.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
