@@ -1,7 +1,7 @@
 package com.example.violetSpringGardening.web.controller;
 
 
-import com.example.violetSpringGardening.domain.service.AdminInterfaceImpl;
+import com.example.violetSpringGardening.domain.service.AdminServiceImpl;
 import com.example.violetSpringGardening.persistence.entity.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,10 +13,10 @@ import java.util.List;
 @CrossOrigin(origins = "http://127.0.0.1:5500")
 @RequestMapping("/register")
 public class AdminController {
-    private final AdminInterfaceImpl adminInterfaceImpl;
+    private final AdminServiceImpl adminInterfaceImpl;
 
     @Autowired
-    public AdminController(AdminInterfaceImpl adminInterfaceImpl) {
+    public AdminController(AdminServiceImpl adminInterfaceImpl) {
         this.adminInterfaceImpl = adminInterfaceImpl;
     }
     @GetMapping
