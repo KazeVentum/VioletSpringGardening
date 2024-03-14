@@ -1,9 +1,10 @@
 package com.example.violetSpringGardening.persistence.entity;
 
+import com.example.violetSpringGardening.persistence.entity.dtos.ProductDTO;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="producto")
+@Table(name = "producto")
 public class Product {
     @Id
     @Column(name = "codigo_producto")
@@ -13,8 +14,8 @@ public class Product {
     private String name;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "gama", nullable = false) //FK que usa gama_producto
-    private ProductRange range;
+    @JoinColumn(name = "gama", nullable = false)
+    private GamaProduct gamaProduct;
 
     @Column(name = "dimensiones")
     private String dimensions;
@@ -26,15 +27,13 @@ public class Product {
     private String description;
 
     @Column(name = "cantidad_en_stock", nullable = false)
-    private int stockQuantity;
+    private Integer amountInStock;
 
     @Column(name = "precio_venta", nullable = false)
-    private float salePrice;
+    private double salePrice;
 
     @Column(name = "precio_proveedor")
-    private float supplierPrice;
-
-    public Product(){}
+    private double supplierPrice;
 
     public String getProductCode() {
         return productCode;
@@ -52,12 +51,12 @@ public class Product {
         this.name = name;
     }
 
-    public ProductRange getRange() {
-        return range;
+    public GamaProduct getGamaProduct() {
+        return gamaProduct;
     }
 
-    public void setRange(ProductRange range) {
-        this.range = range;
+    public void setGamaProduct(GamaProduct gamaProduct) {
+        this.gamaProduct = gamaProduct;
     }
 
     public String getDimensions() {
@@ -84,28 +83,43 @@ public class Product {
         this.description = description;
     }
 
-    public int getStockQuantity() {
-        return stockQuantity;
+    public Integer getAmountInStock() {
+        return amountInStock;
     }
 
-    public void setStockQuantity(int stockQuantity) {
-        this.stockQuantity = stockQuantity;
+    public void setAmountInStock(Integer amountInStock) {
+        this.amountInStock = amountInStock;
     }
 
-    public float getSalePrice() {
+    public double getSalePrice() {
         return salePrice;
     }
 
-    public void setSalePrice(float salePrice) {
+    public void setSalePrice(double salePrice) {
         this.salePrice = salePrice;
     }
 
-    public float getSupplierPrice() {
+    public double getSupplierPrice() {
         return supplierPrice;
     }
 
-    public void setSupplierPrice(float supplierPrice) {
+    public void setSupplierPrice(double supplierPrice) {
         this.supplierPrice = supplierPrice;
+    }
+
+    public ProductDTO toDTO(){
+        ProductDTO dto = new ProductDTO();
+        dto.setProductCode(this.productCode);
+        dto.setName(this.name);
+        dto.setGamaProduct(this.getGamaProduct().getGama());
+        dto.setDimensions(this.dimensions);
+        dto.setSupplier(this.supplier);
+        dto.setDescription(this.description);
+        dto.setAmountInStock(this.amountInStock);
+        dto.setSalePrice(this.salePrice);
+        dto.setSupplierPrice(this.supplierPrice);
+
+        return dto;
     }
 
     @Override
@@ -113,11 +127,11 @@ public class Product {
         return "Product{" +
                 "productCode='" + productCode + '\'' +
                 ", name='" + name + '\'' +
-                ", range=" + range +
+                ", gamaProduct=" + gamaProduct +
                 ", dimensions='" + dimensions + '\'' +
                 ", supplier='" + supplier + '\'' +
                 ", description='" + description + '\'' +
-                ", stockQuantity=" + stockQuantity +
+                ", amountInStock=" + amountInStock +
                 ", salePrice=" + salePrice +
                 ", supplierPrice=" + supplierPrice +
                 '}';

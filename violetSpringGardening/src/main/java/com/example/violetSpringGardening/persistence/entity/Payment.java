@@ -1,8 +1,10 @@
 package com.example.violetSpringGardening.persistence.entity;
 
+
+import com.example.violetSpringGardening.persistence.entity.dtos.PaymentDTO;
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 @Entity
 @Table(name = "pago")
@@ -12,11 +14,11 @@ public class Payment {
     private String transactionId;
 
     @Column(name = "forma_pago", nullable = false)
-    private String paymentMethod;
+    private String wayToPay;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "fecha_pago", nullable = false)
-    private LocalDate paymentDate;
+    private Date paymentDate;
 
     @Column(name = "total", nullable = false)
     private double total;
@@ -33,19 +35,19 @@ public class Payment {
         this.transactionId = transactionId;
     }
 
-    public String getPaymentMethod() {
-        return paymentMethod;
+    public String getWayToPay() {
+        return wayToPay;
     }
 
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
+    public void setWayToPay(String wayToPay) {
+        this.wayToPay = wayToPay;
     }
 
-    public LocalDate getPaymentDate() {
+    public Date getPaymentDate() {
         return paymentDate;
     }
 
-    public void setPaymentDate(LocalDate paymentDate) {
+    public void setPaymentDate(Date paymentDate) {
         this.paymentDate = paymentDate;
     }
 
@@ -65,11 +67,21 @@ public class Payment {
         this.customer = customer;
     }
 
+    public PaymentDTO toDTO() {
+        PaymentDTO dto = new PaymentDTO();
+        dto.setTransactionId(this.transactionId);
+        dto.setWayToPay(this.wayToPay);
+        dto.setPaymentDate(this.paymentDate);
+        dto.setTotal(this.total);
+        dto.setCustomerCode(this.customer != null ? this.customer.getCustomerCode() : null);
+        return dto;
+    }
+
     @Override
     public String toString() {
         return "Payment{" +
                 "transactionId='" + transactionId + '\'' +
-                ", paymentMethod='" + paymentMethod + '\'' +
+                ", wayToPay='" + wayToPay + '\'' +
                 ", paymentDate=" + paymentDate +
                 ", total=" + total +
                 ", customer=" + customer +

@@ -1,15 +1,16 @@
 package com.example.violetSpringGardening.persistence.entity;
 
+
+import com.example.violetSpringGardening.persistence.entity.dtos.GamaProductDTO;
 import jakarta.persistence.*;
 
 import java.util.List;
-
 @Entity
-@Table(name="gama_producto")
-public class ProductRange {
+@Table(name = "gama_producto")
+public class GamaProduct {
     @Id
     @Column(name = "gama", nullable = false)
-    private String range;
+    private String gama;
 
     @Column(name = "descripcion_texto")
     private String textDescription;
@@ -20,17 +21,15 @@ public class ProductRange {
     @Column(name = "imagen")
     private String image;
 
-
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "range", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "gamaProduct", cascade = CascadeType.ALL)
     private List<Product> products;
 
-
-    public String getRange() {
-        return range;
+    public String getGama() {
+        return gama;
     }
 
-    public void setRange(String range) {
-        this.range = range;
+    public void setGama(String gama) {
+        this.gama = gama;
     }
 
     public String getTextDescription() {
@@ -57,10 +56,28 @@ public class ProductRange {
         this.image = image;
     }
 
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    public GamaProductDTO toDTO(){
+        GamaProductDTO dto = new GamaProductDTO();
+        dto.setGama(this.gama);
+        dto.setTextDescription(this.textDescription != null ? this.textDescription : null);
+        dto.setHtmlDescription(this.htmlDescription != null ? this.htmlDescription : null);
+        dto.setImage(this.image != null ? this.image : null);
+
+        return dto;
+    }
+
     @Override
     public String toString() {
         return "GamaProduct{" +
-                "range='" + range + '\'' +
+                "gama='" + gama + '\'' +
                 ", textDescription='" + textDescription + '\'' +
                 ", htmlDescription='" + htmlDescription + '\'' +
                 ", image='" + image + '\'' +

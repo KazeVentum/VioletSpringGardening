@@ -1,5 +1,7 @@
 package com.example.violetSpringGardening.persistence.entity;
 
+
+import com.example.violetSpringGardening.persistence.entity.dtos.OfficeDTO;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -7,7 +9,6 @@ import java.util.List;
 @Entity
 @Table(name = "oficina")
 public class Office {
-
     @Id
     @Column(name = "codigo_oficina", nullable = false)
     private String officeCode;
@@ -32,7 +33,6 @@ public class Office {
 
     @Column(name = "linea_direccion2")
     private String addressLine2;
-
 
     @OneToMany(mappedBy = "office", cascade = CascadeType.ALL)
     private List<Employee> employees;
@@ -99,6 +99,27 @@ public class Office {
 
     public void setAddressLine2(String addressLine2) {
         this.addressLine2 = addressLine2;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
+
+    public OfficeDTO toDTO() {
+        OfficeDTO dto = new OfficeDTO();
+        dto.setOfficeCode(this.officeCode);
+        dto.setCity(this.city);
+        dto.setCountry(this.country);
+        dto.setRegion(this.region);
+        dto.setZipCode(this.zipCode);
+        dto.setPhone(this.phone);
+        dto.setAddressLine1(this.addressLine1);
+        dto.setAddressLine2(this.addressLine2);
+        return dto;
     }
 
     @Override

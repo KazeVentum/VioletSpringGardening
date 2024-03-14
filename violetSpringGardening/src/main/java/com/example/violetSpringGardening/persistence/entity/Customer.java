@@ -1,16 +1,18 @@
 package com.example.violetSpringGardening.persistence.entity;
 
+
+import com.example.violetSpringGardening.persistence.entity.dtos.CustomerDTO;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
-@Table(name="cliente")
+@Table(name = "cliente")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "codigo_cliente")
-    private int customerCode;
+    private Integer customerCode;
 
     @Column(name = "nombre_cliente", nullable = false)
     private String customerName;
@@ -45,13 +47,12 @@ public class Customer {
     @Column(name = "codigo_postal")
     private String zipCode;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "codigo_empleado_rep_ventas") //FK
-    private Employee repSales; //codigo de la tabla empleado
-
     @Column(name = "limite_credito")
     private double creditLimit;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "codigo_empleado_rep_ventas")
+    private Employee repSales;
 
     @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Payment> payments;
@@ -59,11 +60,11 @@ public class Customer {
     @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Order> orders;
 
-    public int getCustomerCode() {
+    public Integer getCustomerCode() {
         return customerCode;
     }
 
-    public void setCustomerCode(int customerCode) {
+    public void setCustomerCode(Integer customerCode) {
         this.customerCode = customerCode;
     }
 
@@ -155,6 +156,14 @@ public class Customer {
         this.zipCode = zipCode;
     }
 
+    public double getCreditLimit() {
+        return creditLimit;
+    }
+
+    public void setCreditLimit(double creditLimit) {
+        this.creditLimit = creditLimit;
+    }
+
     public Employee getRepSales() {
         return repSales;
     }
@@ -163,12 +172,39 @@ public class Customer {
         this.repSales = repSales;
     }
 
-    public double getCreditLimit() {
-        return creditLimit;
+    public List<Payment> getPayments() {
+        return payments;
     }
 
-    public void setCreditLimit(double creditLimit) {
-        this.creditLimit = creditLimit;
+    public void setPayments(List<Payment> payments) {
+        this.payments = payments;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
+    public CustomerDTO toDTO() {
+        CustomerDTO dto = new CustomerDTO();
+        dto.setCustomerCode(this.customerCode);
+        dto.setCustomerName(this.customerName);
+        dto.setContactName(this.contactName);
+        dto.setContactLastName(this.contactLastName);
+        dto.setPhone(this.phone);
+        dto.setFax(this.fax);
+        dto.setAddressLine1(this.addressLine1);
+        dto.setAddressLine2(this.addressLine2);
+        dto.setCity(this.city);
+        dto.setRegion(this.region);
+        dto.setCountry(this.country);
+        dto.setZipCode(this.zipCode);
+        dto.setCreditLimit(this.creditLimit);
+        dto.setRepSalesCode(this.repSales != null ? this.repSales.getEmployeeCode() : null);
+        return dto;
     }
 
     @Override
