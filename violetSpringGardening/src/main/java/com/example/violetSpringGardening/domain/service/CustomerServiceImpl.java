@@ -23,11 +23,11 @@ public class CustomerServiceImpl implements ServiceInterface<Customer> {
     }
 
 
-    public List<Customer> customersWithSalesRep() {
+    public List<Object> customersWithSalesRep() {
         return customerRepository.customersWithSalesRep();
     }
 
-    public List<Customer> customersThatHavePaid() {
+    public List<Object> customersThatHavePaid() {
         return customerRepository.customersThatHavePaid();
     }
 }

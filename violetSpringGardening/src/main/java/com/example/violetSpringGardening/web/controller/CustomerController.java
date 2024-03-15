@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/violetspring")
-@CrossOrigin("*")
+@CrossOrigin("http://localhost:8080")
 public class CustomerController {
 
     private final CustomerServiceImpl customerService;
@@ -22,9 +22,13 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping
-    public List<Customer> customersWithSalesRep(){return customerService.customersWithSalesRep();}
+    
+    @GetMapping("/customersWithSalesRep")
+    public List<Object> customersWithSalesRep(){return customerService.customersWithSalesRep();}
 
-    @GetMapping
-    public List<Customer> customersThatHavePaid(){return customerService.customersThatHavePaid();}
+    @GetMapping("/customersThatHavePaid")
+    public List<Object> customersThatHavePaid(){return customerService.customersThatHavePaid();}
+
+    @GetMapping("/customers/all")
+    public List<Customer> getAllCustomers(){ return customerService.getAll();}
 }
