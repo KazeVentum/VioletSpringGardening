@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19bfb7e6-3805-45ed-9319-aba042d93014" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/persistence/entity/OrderDetail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/persistence/entity/OrderDetailId.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/repository/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/repository/CustomerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/persistence/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/persistence/entity/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/persistence/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/persistence/entity/Product.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
