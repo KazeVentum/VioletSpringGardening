@@ -22,13 +22,14 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    
+    @GetMapping("/customers/all")
+    public List<Customer> getAllCustomers(){ return customerService.getAll();}
+
     @GetMapping("/customersWithSalesRep")
     public List<Object> customersWithSalesRep(){return customerService.customersWithSalesRep();}
 
     @GetMapping("/customersThatHavePaid")
     public List<Object> customersThatHavePaid(){return customerService.customersThatHavePaid();}
 
-    @GetMapping("/customers/all")
-    public List<Customer> getAllCustomers(){ return customerService.getAll();}
+
 }
