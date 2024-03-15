@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (currentUrl.includes("login.html")) {
     // Código específico para la página de login
-    // Código específico para la página de login
     const loginForm = document.getElementById("formUserToken");
     const loginUserNameInput = document.getElementById("adminToken");
     const loginPasswordInput = document.getElementById("passwordToken");
@@ -41,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((token) => {
           sessionStorage.setItem("jwtToken", token.trim()); // Guardar el token JWT en sessionStorage
           alert("Token generado correctamente");
-          window.location.href = "test.html";
+          window.location.href = "index.html";
         })
         .catch((error) => {
           console.error("Error al obtener el token de login:", error);
