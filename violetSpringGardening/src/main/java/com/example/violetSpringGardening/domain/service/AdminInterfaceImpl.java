@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AdminInterfaceImpl implements ServiceInterface <Admin>{
+public class AdminInterfaceImpl implements AdminInterface<Admin> {
 
     private final AdminRepository adminRepository;
 
