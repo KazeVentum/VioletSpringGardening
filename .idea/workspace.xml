@@ -5,7 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19bfb7e6-3805-45ed-9319-aba042d93014" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/service/AdminInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/service/CustomerServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/service/EmployeeServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/service/OfficeServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/service/OrderServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/service/PaymentServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/service/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/repository/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/repository/CustomerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/service/AdminInterfaceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/service/AdminInterfaceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/service/ServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/service/ServiceInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/persistence/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/persistence/entity/Customer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +26,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>

@@ -13,7 +13,7 @@ public interface CustomerRepository extends JpaRepository <Customer, Long> {
     @Query("SELECT nombre_cliente, CONCAT(nombre, ' ', apellido1,  ' ',apellido2) AS nombre \n" +
             "FROM cliente \n" +
             "JOIN empleado ON cliente.codigo_empleado_rep_ventas = empleado.codigo_empleado;\n")
-    List<Customer> customerWithHisSalesRep ();
+    List<Customer> customersWithSalesRep ();
 
 
     //2. Muestra el nombre de los clientes que hayan realizado pagos junto con el nombre de sus representantes de ventas.
@@ -22,5 +22,5 @@ public interface CustomerRepository extends JpaRepository <Customer, Long> {
             "JOIN pago ON cliente.codigo_cliente = pago.codigo_cliente\n" +
             "JOIN empleado ON empleado.codigo_empleado = cliente.codigo_empleado_rep_ventas\n" +
             "ORDER BY nombre_cliente ASC;")
-    List<Object> customersThatHavePaid();
+    List<Customer> customersThatHavePaid();
 }
