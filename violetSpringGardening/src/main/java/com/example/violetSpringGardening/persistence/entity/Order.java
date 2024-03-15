@@ -33,6 +33,7 @@ public class Order {
     @JoinColumn(name = "codigo_cliente", nullable = false)
     private Customer customer;
 
+
     public int getOrderCode() {
         return orderCode;
     }

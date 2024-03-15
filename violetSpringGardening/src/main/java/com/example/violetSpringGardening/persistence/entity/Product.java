@@ -2,6 +2,7 @@ package com.example.violetSpringGardening.persistence.entity;
 
 import jakarta.persistence.*;
 
+
 @Entity
 @Table(name="producto")
 public class Product {
@@ -34,7 +35,7 @@ public class Product {
     @Column(name = "precio_proveedor")
     private float supplierPrice;
 
-    public Product(){}
+
 
     public String getProductCode() {
         return productCode;
