@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((response) => {
           if (!response.ok) {
             alert("Incorrect username or password");
-            
             throw new Error(
               "Error al obtener el token de login. Código de estado HTTP: " +
                 response.status
@@ -40,8 +39,9 @@ document.addEventListener("DOMContentLoaded", function () {
           return response.text(); // Leer la respuesta como texto
         })
         .then((token) => {
-          localStorage.setItem("jwtToken", token.trim()); // Guardar el token JWT en localStorage
+          sessionStorage.setItem("jwtToken", token.trim()); // Guardar el token JWT en sessionStorage
           alert("Token generado correctamente");
+          window.location.href = "test.html";
         })
         .catch((error) => {
           console.error("Error al obtener el token de login:", error);
