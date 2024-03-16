@@ -25,4 +25,7 @@ public class ProductRangeController {
 
     @GetMapping("/productrange/all")
     public List<ProductRange> getAllProductRanges(){return productRangeService.getAll();}
+
+//    @GetMapping("/productRangesWithEachCustomer")
+//    public List<Object> productRangesWithEachCustomer(){return productRangeService.productRangesWithEachCustomer();}
 }

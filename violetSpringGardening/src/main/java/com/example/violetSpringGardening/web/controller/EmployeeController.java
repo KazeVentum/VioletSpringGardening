@@ -15,7 +15,6 @@ import java.util.List;
 @RequestMapping("/api/violetspring")
 @CrossOrigin("http://localhost:8080")
 public class EmployeeController {
-
     private final EmployeeServiceImpl employeeService;
 
     @Autowired
@@ -23,6 +22,28 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
+
     @GetMapping("/employees/all")
     public List<Employee> getAllEmployees(){ return employeeService.getAll();}
+
+    @GetMapping("/employeesWithTheirBoss")
+    public List<Object> employeesWithTheirBoss(){return employeeService.employeesWithTheirBoss();}
+
+    @GetMapping("/employeesWithTheBossOfTheirBoss")
+    public List<Object> employeesWithTheBossOfTheirBoss(){return employeeService.employeesWithTheBossOfTheirBoss();}
+
+    @GetMapping("/employeesWithoutOffice")
+    public List<Object> employeesWithoutOffice(){return employeeService.employeesWithoutOffice();}
+
+    @GetMapping("/employeesWithoutCustomer")
+    public List<Object> employeesWithoutCustomer(){return employeeService.employeesWithoutCustomer();}
+
+    @GetMapping("/employeesOfficeWithoutCustomer")
+    public List<Object> employeesOfficeWithoutCustomer(){return employeeService.employeesOfficeWithoutCustomer();}
+
+    @GetMapping("/employeesWithoutOfficeAndCustomer")
+    public List<Object> employeesWithoutOfficeAndCustomer(){return employeeService.employeesWithoutOfficeAndCustomer();}
+
+    @GetMapping("/employeesWithoutCustomersBoss")
+    public List<Object> employeesWithoutCustomersBoss(){return employeeService.employeesWithoutCustomersBoss();}
 }

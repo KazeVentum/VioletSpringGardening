@@ -16,8 +16,14 @@ public class OfficeServiceImpl implements ServiceInterface<Office> {
         this.officeRepository = officeRepository;
     }
 
+
+    //methods
     @Override
     public List<Office> getAll() {
         return officeRepository.findAll();
     }
+
+    public List<Object> officesWithClientsInSpecificCity(String cityName){return officeRepository.officesWithClientsInSpecificCity(cityName);}
+
+//    public List<Object> officesWithoutSalesRepByRange(String productRange){return officeRepository.officesWithoutSalesRepByRange(productRange);}
 }
