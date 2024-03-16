@@ -321,17 +321,17 @@ main .breadcrumbs li a {
 	font-size: 14px;
 }
 main .breadcrumbs li a {
-	color: var(--blue);
+	color: #4c1636
 }
 main .breadcrumbs li a.active,
 main .breadcrumbs li.divider {
-	color: var(--dark-grey);
+	color: #30011d;
 	pointer-events: none;
 }
 main .info-data {
 	margin-top: 36px;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
 	grid-gap: 20px;
 }
 main .info-data .card {
@@ -339,7 +339,7 @@ main .info-data .card {
     margin: 15px;
 	border-radius: 10px;
 	background: var(--light);
-	box-shadow: 4px 4px 16px rgba(0, 0, 0, .05);
+	box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.203);
 }
 main .card .head {
 	display: flex;
@@ -348,15 +348,13 @@ main .card .head {
 }
 main .card .head h2 {
 	font-size: 24px;
+	color: #81689D;
 	font-weight: 600;
 }
 main .card .head p {
 	font-size: 15px;
 }
-main .card .head .icon {
-	font-size: 25px;
-    color: rgb(34, 34, 85);
-}
+
 
 
 main .data {

@@ -124,30 +124,6 @@ window.addEventListener('click', function (e) {
 
 // ENTITY CUSTOMERS QUERIES
 
-// Función para agregar las tarjetas de cliente al contenedor
-function addClientCards(responseData) {
-    const clientCardsContainer = document.getElementById('showData');
-    let html = '';
-
-    responseData.forEach(clientData => {
-        const title = clientData[0];
-        const name = clientData[1];
-
-        html += `
-            <div class="card">
-                <div class="head">
-                    <div>
-                        <h2>${title}</h2>
-                        <p>${name}</p>
-                    </div>
-                </div>
-                </div>
-            </div>
-        `;
-    });
-    clientCardsContainer.innerHTML = html;
-}
-
 // Función para realizar la solicitud y mostrar las tarjetas de cliente
 function RepeatSales() {
     const token = sessionStorage.getItem('jwtToken'); 
@@ -159,13 +135,37 @@ function RepeatSales() {
     })
     .then(response => response.json())
     .then(data => {
-
-        addClientCards(data);
+	
+		const clientCardsContainer = document.getElementById('showData');
+		let html = '';
+		data.forEach(data => {
+			const title = data[0];
+			const name = data[1];
+	
+			html += `
+				<div class="card">
+					<div class="head">
+						<div>
+							<h1>Customer:</h1>
+							<h2>${title}</h2>
+							<br>
+							<li><strong>Sales representative:</strong> ${name}</li>			
+						</div>
+					</div>
+					</div>
+				</div>
+			`;
+		});
+		clientCardsContainer.innerHTML = html;
     })
     .catch(error => console.error('Error:', error));
 }
 
 document.getElementById("customersWithSalesRep_btn").addEventListener("click", function() {
+	var title = document.querySelector("#customersWithSalesRep_btn a");
+	var newTitle = title.textContent;
+	var dashboardTittle = document.getElementById("titleSection");
+	dashboardTittle.innerHTML = newTitle;
     RepeatSales();
 });
 
@@ -175,15 +175,90 @@ function PaidCustomers() {
 	fetch('http://localhost:8080/api/violetspring/customersThatHavePaid', {
 		method: 'GET',
 		headers: {
-		  'Authorization': `Bearer ${token}`
+			'Authorization': `Bearer ${token}`
 		}
-	  })
-	  .then(response => response.json())
-	  .then(data => addClientCards(data))  
-	  .catch(error => console.error('Error:', error));
+		})
+	.then(response => response.json())
+	.then(data => {
+	
+		const clientCardsContainer = document.getElementById('showData');
+		let html = '';
+		data.forEach(data => {
+			const title = data[0];
+			const name = data[1];
+			html += `
+				<div class="card">
+					<div class="head">
+						<div>
+							<h1>Paying Customer:</h1>
+							<h2>${title}</h2>
+							<br>
+							<li><strong>Sales representative:</strong> ${name}</li>					
+						</div>
+					</div>
+					</div>
+				</div>
+			`;
+		});
+		clientCardsContainer.innerHTML = html;
+    })
+	.catch(error => console.error('Error:', error));
 }
 document.getElementById("customersThatHavePaid_btn").addEventListener("click", function() {
+	var title = document.querySelector("#customersThatHavePaid_btn a");
+	var newTitle = title.textContent;
+	var dashboardTittle = document.getElementById("titleSection");
+	dashboardTittle.innerHTML = newTitle;
+	console.log(newTitle);
     PaidCustomers();
+});
+
+
+function paidCustomerOffice() {
+    const token = sessionStorage.getItem('jwtToken'); 
+    fetch('http://localhost:8080/api/violetspring/customersThatHavePaidAndOfficeCity', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+	
+		const clientCardsContainer = document.getElementById('showData');
+		let html = '';
+		data.forEach(data => {
+			const customer = data[0];
+			const repSale = data[1];
+			const cityOffice = data[2];
+	
+			html += `
+				<div class="card">
+					<div class="head">
+						<div>
+							<h1>Customer:</h1>
+							<h2>${customer}</h2>
+							<br>
+							<li><strong>Sales representative:</strong> ${repSale}</li>
+							<br>	
+							<li><strong>Office city:</strong> ${cityOffice}</li>				
+						</div>
+					</div>
+					</div>
+				</div>
+			`;
+		});
+		clientCardsContainer.innerHTML = html;
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+document.getElementById("customersThatHavePaidAndOfficeCity_btn").addEventListener("click", function() {
+	var title = document.querySelector("#customersThatHavePaidAndOfficeCity_btn a");
+	var newTitle = title.textContent;
+	var dashboardTittle = document.getElementById("titleSection");
+	dashboardTittle.innerHTML = newTitle;
+    paidCustomerOffice();
 });
 
 
