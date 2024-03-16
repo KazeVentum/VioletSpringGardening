@@ -16,8 +16,12 @@ public class ProductRangeServiceImpl implements ServiceInterface<ProductRange>{
         this.productRangeRepository = productRangeRepository;
     }
 
+
+    //methods
     @Override
     public List<ProductRange> getAll() {
         return productRangeRepository.findAll();
     }
+
+//    public List<Object> productRangesWithEachCustomer(){return productRangeRepository.productRangesWithEachCustomer();}
 }

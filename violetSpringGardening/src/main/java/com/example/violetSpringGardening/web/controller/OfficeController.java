@@ -3,10 +3,7 @@ package com.example.violetSpringGardening.web.controller;
 import com.example.violetSpringGardening.domain.service.OfficeServiceImpl;
 import com.example.violetSpringGardening.persistence.entity.Office;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,7 +11,6 @@ import java.util.List;
 @RequestMapping("/api/violetspring")
 @CrossOrigin("http://localhost:8080")
 public class OfficeController {
-
     private final OfficeServiceImpl officeService;
 
     @Autowired
@@ -22,6 +18,13 @@ public class OfficeController {
         this.officeService = officeService;
     }
 
+
     @GetMapping("/offices/all")
     public List<Office> getAllOffices(){return officeService.getAll();}
+
+    @GetMapping("/officesWithClientsInSpecificCity")
+    public List<Object> officesWithClientsInSpecificCity(@RequestParam String cityName){return officeService.officesWithClientsInSpecificCity(cityName);}
+
+//    @GetMapping("/officesWithoutSalesRepByRange")
+//    public List<Object> officesWithoutSalesRepByRange(@RequestParam String productRange){return officeService.officesWithoutSalesRepByRange(productRange);}
 }

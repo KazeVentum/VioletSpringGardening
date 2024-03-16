@@ -53,11 +53,9 @@ public class Customer {
     @Column(name = "limite_credito")
     private double creditLimit;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Payment> payments;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Order> orders;
 

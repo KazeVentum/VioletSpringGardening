@@ -16,8 +16,14 @@ public class ProductServiceImpl implements ServiceInterface<Product>{
         this.productRepository = productRepository;
     }
 
+
+    //methods
     @Override
     public List<Product> getAll() {
         return productRepository.findAll();
     }
+
+    public List<Object> productsWithoutOrder(){return productRepository.productsWithoutOrder();}
+
+    public List<Object> productsWithoutOrdersDescription(){return productRepository.productsWithoutOrdersDescription();}
 }
