@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Obtener la URL actual
+  // Get the current URL
   const currentUrl = window.location.pathname;
 
   if (currentUrl.includes("login.html")) {
@@ -10,8 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
       window.location.href = "register.html";
     })
 
-
-    // Código específico para la página de login
+    // Specific code for the login page
     const loginForm = document.getElementById("formUserToken");
     const loginUserNameInput = document.getElementById("adminToken");
     const loginPasswordInput = document.getElementById("passwordToken");
@@ -39,25 +38,26 @@ document.addEventListener("DOMContentLoaded", function () {
           if (!response.ok) {
             alert("Incorrect username or password");
             throw new Error(
-              "Error al obtener el token de login. Código de estado HTTP: " +
+              "Error obtaining login token. HTTP status code:" +
                 response.status
             );
           }
-          return response.text(); // Leer la respuesta como texto
+          return response.text(); 
         })
         .then((token) => {
-          sessionStorage.setItem("jwtToken", token.trim()); // Guardar el token JWT en sessionStorage
-          alert("Token generado correctamente");
+          sessionStorage.setItem("jwtToken", token.trim()); //Save the JWT token in sessionStorage
+          alert("Successfully generated token");
           window.location.href = "index.html";
         })
         .catch((error) => {
-          console.error("Error al obtener el token de login:", error);
+          console.error("Error obtaining login token:", error);
           loginUserNameInput.value = ''; 
           loginPasswordInput.value = ''; 
         });
     });
   } else if (currentUrl.includes("register.html")) {
-    // Código específico para la página de registro
+
+  // Specific code for the registration page
     const registerButton = document.getElementById("btnRegister");
     const registerUserNameInput = document.getElementById("adminUser");
     const registerPasswordInput = document.getElementById("passwordUser");
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
           window.location.href = "login.html";
         })
         .catch((error) => {
-          console.error("Error en el registro:", error);
+          console.error("Registry error:", error);
         });
     });
   }

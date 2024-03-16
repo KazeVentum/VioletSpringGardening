@@ -19,6 +19,7 @@ allDropdown.forEach(item=> {
 		item.classList.toggle('show');
 	})
 })
+
 // SIDEBAR COLLAPSE
 const toggleSidebar = document.querySelector('nav .toggle-sidebar');
 const allSideDivider = document.querySelectorAll('#sidebar .divider');
@@ -119,11 +120,6 @@ window.addEventListener('click', function (e) {
 	})
 })
 
-// PROGRESSBAR NO NECESARIO
-const allProgress = document.querySelectorAll('main .card .progress');
-allProgress.forEach(item=> {
-	item.style.setProperty('--value', item.dataset.value)
-})
 
 
 // ENTITY CUSTOMERS QUERIES
@@ -133,12 +129,10 @@ function addClientCards(responseData) {
     const clientCardsContainer = document.getElementById('showData');
     let html = '';
 
-    // Iterar sobre los datos de la respuesta y generar el HTML de las tarjetas de cliente
     responseData.forEach(clientData => {
         const title = clientData[0];
         const name = clientData[1];
 
-        // Generar el HTML para cada tarjeta de cliente
         html += `
             <div class="card">
                 <div class="head">
@@ -146,16 +140,11 @@ function addClientCards(responseData) {
                         <h2>${title}</h2>
                         <p>${name}</p>
                     </div>
-                    <i class='bx bx-repeat icon'></i>
                 </div>
-                <div class="icoInfo">
-                    <i class='bx bxs-user-pin bx-lg bx-tada-hover icon'></i>
                 </div>
             </div>
         `;
     });
-
-    // Agregar el HTML generado al contenedor
     clientCardsContainer.innerHTML = html;
 }
 
@@ -170,18 +159,15 @@ function RepeatSales() {
     })
     .then(response => response.json())
     .then(data => {
-        // Llamar a la función para agregar las tarjetas de cliente con la respuesta del fetch
+
         addClientCards(data);
     })
     .catch(error => console.error('Error:', error));
 }
 
-// Agregar el evento click al botón
 document.getElementById("customersWithSalesRep_btn").addEventListener("click", function() {
-    // Cuando se hace clic en el botón, llamar a RepeatSales para obtener los datos y mostrar las tarjetas de cliente
     RepeatSales();
 });
-
 
 
 function PaidCustomers() {
@@ -193,11 +179,25 @@ function PaidCustomers() {
 		}
 	  })
 	  .then(response => response.json())
-	  .then(data => addClientCards(data))
+	  .then(data => addClientCards(data))  
 	  .catch(error => console.error('Error:', error));
 }
 document.getElementById("customersThatHavePaid_btn").addEventListener("click", function() {
     PaidCustomers();
 });
+
+
+
+
+function cleanToken() {
+	sessionStorage.removeItem('jwtToken');
+	localStorage.removeItem('jwtToken');
+	console.log('Token removed from sessionStorage');
+  }
+
+	const buttonClearToken = document.getElementById('buttonClearToken'); 
+	buttonClearToken.addEventListener('click', function() {
+		cleanToken();
+	});
 
 
