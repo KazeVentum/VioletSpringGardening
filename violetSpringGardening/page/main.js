@@ -124,7 +124,6 @@ window.addEventListener('click', function (e) {
 
 // ENTITY CUSTOMERS QUERIES
 
-// Función para realizar la solicitud y mostrar las tarjetas de cliente
 function RepeatSales() {
     const token = sessionStorage.getItem('jwtToken'); 
     fetch('http://localhost:8080/api/violetspring/customersWithSalesRep', {
@@ -214,6 +213,50 @@ document.getElementById("customersThatHavePaid_btn").addEventListener("click", f
 });
 
 
+function UnPaidCustomers() {
+	const token = sessionStorage.getItem('jwtToken'); 
+	fetch('http://localhost:8080/api/violetspring/customersThatHaventPaid', {
+		method: 'GET',
+		headers: {
+			'Authorization': `Bearer ${token}`
+		}
+		})
+	.then(response => response.json())
+	.then(data => {
+	
+		const clientCardsContainer = document.getElementById('showData');
+		let html = '';
+		data.forEach(data => {
+			const title = data[0];
+			const name = data[1];
+			html += `
+				<div class="card">
+					<div class="head">
+						<div>
+							<h1>Unpaid customer:</h1>
+							<h2>${title}</h2>
+							<br>
+							<li><strong>Sales representative:</strong> ${name}</li>					
+						</div>
+					</div>
+					</div>
+				</div>
+			`;
+		});
+		clientCardsContainer.innerHTML = html;
+    })
+	.catch(error => console.error('Error:', error));
+}
+document.getElementById("customersThatHaventPaid_btn").addEventListener("click", function() {
+	var title = document.querySelector("#customersThatHaventPaid_btn a");
+	var newTitle = title.textContent;
+	var dashboardTittle = document.getElementById("titleSection");
+	dashboardTittle.innerHTML = newTitle;
+	console.log(newTitle);
+    UnPaidCustomers();
+});
+
+
 function paidCustomerOffice() {
     const token = sessionStorage.getItem('jwtToken'); 
     fetch('http://localhost:8080/api/violetspring/customersThatHavePaidAndOfficeCity', {
@@ -236,7 +279,7 @@ function paidCustomerOffice() {
 				<div class="card">
 					<div class="head">
 						<div>
-							<h1>Customer:</h1>
+							<h1>Paid Customer:</h1>
 							<h2>${customer}</h2>
 							<br>
 							<li><strong>Sales representative:</strong> ${repSale}</li>
@@ -262,6 +305,289 @@ document.getElementById("customersThatHavePaidAndOfficeCity_btn").addEventListen
 });
 
 
+function UnpaidCustomerOffice() {
+    const token = sessionStorage.getItem('jwtToken'); 
+    fetch('http://localhost:8080/api/violetspring/customersThatHaventPaidAndOfficeCity', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+	
+		const clientCardsContainer = document.getElementById('showData');
+		let html = '';
+		data.forEach(data => {
+			const customer = data[0];
+			const repSale = data[1];
+			const cityOffice = data[2];
+	
+			html += `
+				<div class="card">
+					<div class="head">
+						<div>
+							<h1>Unpaid Customer:</h1>
+							<h2>${customer}</h2>
+							<br>
+							<li><strong>Sales representative:</strong> ${repSale}</li>
+							<br>	
+							<li><strong>Office city:</strong> ${cityOffice}</li>				
+						</div>
+					</div>
+					</div>
+				</div>
+			`;
+		});
+		clientCardsContainer.innerHTML = html;
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+document.getElementById("customersThatHaventPaidAndOfficeCity_btn").addEventListener("click", function() {
+	var title = document.querySelector("#customersThatHaventPaidAndOfficeCity_btn a");
+	var newTitle = title.textContent;
+	var dashboardTittle = document.getElementById("titleSection");
+	dashboardTittle.innerHTML = newTitle;
+    UnpaidCustomerOffice();
+});
+
+function AllCustomerOffice() {
+    const token = sessionStorage.getItem('jwtToken'); 
+    fetch('http://localhost:8080/api/violetspring/allCustomersWithSalesRepCity', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+	
+		const clientCardsContainer = document.getElementById('showData');
+		let html = '';
+		data.forEach(data => {
+			const customer = data[0];
+			const repSale = data[1];
+			const cityOffice = data[2];
+	
+			html += `
+				<div class="card">
+					<div class="head">
+						<div>
+							<h1>Customer's Name:</h1>
+							<h2>${customer}</h2>
+							<br>
+							<li><strong>Sales representative:</strong> ${repSale}</li>
+							<br>	
+							<li><strong>Office city:</strong> ${cityOffice}</li>				
+						</div>
+					</div>
+					</div>
+				</div>
+			`;
+		});
+		clientCardsContainer.innerHTML = html;
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+document.getElementById("allCustomersWithSalesRepCity_btn").addEventListener("click", function() {
+	var title = document.querySelector("#allCustomersWithSalesRepCity_btn a");
+	var newTitle = title.textContent;
+	var dashboardTittle = document.getElementById("titleSection");
+	dashboardTittle.innerHTML = newTitle;
+    AllCustomerOffice();
+});
+
+
+function CustomerWithLateDelivery() {
+    const token = sessionStorage.getItem('jwtToken'); 
+    fetch('http://localhost:8080/api/violetspring/customersWithLateDeliveries', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+		const clientCardsContainer = document.getElementById('showData');
+		let html = '';
+		data.forEach(name => {
+			html += `
+				<div class="card">
+					<div class="head">
+						<div>
+							<h1>Customer's Name:</h1>
+							<h2>${name}</h2>         
+						</div>
+					</div>
+				</div>
+			`;
+		});
+		clientCardsContainer.innerHTML = html;
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+document.getElementById("customersWithLateDeliveries_btn").addEventListener("click", function() {
+	var title = document.querySelector("#customersWithLateDeliveries_btn a");
+	var newTitle = title.textContent;
+	var dashboardTittle = document.getElementById("titleSection");
+	dashboardTittle.innerHTML = newTitle;
+    CustomerWithLateDelivery();
+});
+
+
+function CustomersWithoutPayment() {
+    const token = sessionStorage.getItem('jwtToken'); 
+    fetch('http://localhost:8080/api/violetspring/customersWithoutPayments', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+		const clientCardsContainer = document.getElementById('showData');
+		let html = '';
+		data.forEach(client => {
+			html += `
+				<div class="card">
+					<div class="head">
+						<div>
+							<h1>Customer's Name:</h1>
+							<h2>${client.customerName}</h2>         
+						</div>
+					</div>
+				</div>
+			`;
+		});
+		clientCardsContainer.innerHTML = html;
+	})		
+    .catch(error => console.error('Error:', error));
+}
+
+document.getElementById("customersWithoutPayments_btn").addEventListener("click", function() {
+	var title = document.querySelector("#customersWithoutPayments_btn a");
+	var newTitle = title.textContent;
+	var dashboardTittle = document.getElementById("titleSection");
+	dashboardTittle.innerHTML = newTitle;
+    CustomersWithoutPayment();
+});
+
+
+function CustomersWithoutOrder() {
+    const token = sessionStorage.getItem('jwtToken'); 
+    fetch('http://localhost:8080/api/violetspring/customersWithoutOrders', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+		const clientCardsContainer = document.getElementById('showData');
+		let html = '';
+		data.forEach(client => {
+			html += `
+				<div class="card">
+					<div class="head">
+						<div>
+							<h1>Customer's Name:</h1>
+							<h2>${client}</h2>         
+						</div>
+					</div>
+				</div>
+			`;
+		});
+		clientCardsContainer.innerHTML = html;
+	})		
+    .catch(error => console.error('Error:', error));
+}
+
+document.getElementById("customersWithoutOrders_btn").addEventListener("click", function() {
+	var title = document.querySelector("#customersWithoutOrders_btn a");
+	var newTitle = title.textContent;
+	var dashboardTittle = document.getElementById("titleSection");
+	dashboardTittle.innerHTML = newTitle;
+    CustomersWithoutOrder();
+});
+
+
+function CustomersWithoutOrderAndPayment() {
+    const token = sessionStorage.getItem('jwtToken'); 
+    fetch('http://localhost:8080/api/violetspring/customersWithoutOrdersAndPayments', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+		const clientCardsContainer = document.getElementById('showData');
+		let html = '';
+		data.forEach(client => {
+			html += `
+				<div class="card">
+					<div class="head">
+						<div>
+							<h1>Customer's Name:</h1>
+							<h2>${client}</h2>         
+						</div>
+					</div>
+				</div>
+			`;
+		});
+		clientCardsContainer.innerHTML = html;
+	})		
+    .catch(error => console.error('Error:', error));
+}
+
+document.getElementById("customersWithoutOrdersAndPayments_btn").addEventListener("click", function() {
+	var title = document.querySelector("#customersWithoutOrdersAndPayments_btn a");
+	var newTitle = title.textContent;
+	var dashboardTittle = document.getElementById("titleSection");
+	dashboardTittle.innerHTML = newTitle;
+    CustomersWithoutOrderAndPayment();
+});
+
+function customersWithOrdersButWithoutPayments() {
+    const token = sessionStorage.getItem('jwtToken'); 
+    fetch('http://localhost:8080/api/violetspring/customersWithOdersButWithoutPayments', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+		const clientCardsContainer = document.getElementById('showData');
+		let html = '';
+		data.forEach(client => {
+			html += `
+				<div class="card">
+					<div class="head">
+						<div>
+							<h1>Customer's Name:</h1>
+							<h2>${client}</h2>         
+						</div>
+					</div>
+				</div>
+			`;
+		});
+		clientCardsContainer.innerHTML = html;
+	})		
+    .catch(error => console.error('Error:', error));
+}
+
+document.getElementById("customersWithOrdersButWithoutPayments_btn").addEventListener("click", function() {
+	var title = document.querySelector("#customersWithOrdersButWithoutPayments_btn a");
+	var newTitle = title.textContent;
+	var dashboardTittle = document.getElementById("titleSection");
+	dashboardTittle.innerHTML = newTitle;
+    customersWithOrdersButWithoutPayments();
+});
+
 
 
 function cleanToken() {
@@ -269,10 +595,11 @@ function cleanToken() {
 	localStorage.removeItem('jwtToken');
 	console.log('Token removed from sessionStorage');
   }
+const buttonClearToken = document.getElementById('buttonClearToken'); 
+buttonClearToken.addEventListener('click', function() {
+	cleanToken();
+});
 
-	const buttonClearToken = document.getElementById('buttonClearToken'); 
-	buttonClearToken.addEventListener('click', function() {
-		cleanToken();
-	});
+
 
 

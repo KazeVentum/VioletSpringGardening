@@ -28,11 +28,10 @@ public class LoginController {
 
         if (admin != null && admin.getPassword().equals(password)) {
             String token = jwtAuthtenticationConfig.getJWTToken(username);
-            admin.setToken(token);
             adminRepository.save(admin);
             return token;
         } else {
-            throw new RuntimeException("Credenciales inválidas");
+            throw new RuntimeException("Invalid Information");
         }
     }
 }

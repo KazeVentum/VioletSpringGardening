@@ -65,7 +65,7 @@ public interface CustomerRepository extends JpaRepository <Customer, Long> {
 
 
     //10. Devuelve el nombre de los clientes a los que no se les ha entregado a tiempo un pedido.
-    @Query("SELECT c.customerName AS nombreCliente " +
+    @Query("SELECT DISTINCT c.customerName AS nombreCliente " +
             "FROM Customer c " +
             "JOIN c.orders o " +
             "WHERE o.deliverDate > o.expectedDate OR o.deliverDate IS NULL")
@@ -80,14 +80,14 @@ public interface CustomerRepository extends JpaRepository <Customer, Long> {
 
 
     //13. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pedido.
-    @Query("SELECT c " +
+    @Query("SELECT c.customerName " +
             "FROM Customer c " +
             "WHERE NOT EXISTS (SELECT 1 FROM Order o WHERE o.customer = c)")
     List<Object> customersWithoutOrders();
 
 
     //14. Devuelve un listado que muestre los clientes que no han realizado ningún pago y los que no han realizado ningún pedido.
-    @Query("SELECT c " +
+    @Query("SELECT c.customerName " +
             "FROM Customer c " +
             "WHERE NOT EXISTS (" +
             "    SELECT 1 " +
@@ -103,7 +103,7 @@ public interface CustomerRepository extends JpaRepository <Customer, Long> {
 
 
    //22. Devuelve un listado con los clientes que han realizado algún pedido pero no han realizado ningún pago.
-    @Query("SELECT DISTINCT c " +
+    @Query("SELECT DISTINCT c.customerName " +
             "FROM Customer c " +
             "JOIN c.orders o " +
             "WHERE NOT EXISTS (SELECT 1 FROM Payment p WHERE p.customer = c)")
