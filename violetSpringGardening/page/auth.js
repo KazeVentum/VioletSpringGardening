@@ -3,6 +3,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const currentUrl = window.location.pathname;
 
   if (currentUrl.includes("login.html")) {
+
+    const redirect = document.getElementById("reDirectRegister");
+
+    redirect.addEventListener("click", function () {
+      window.location.href = "register.html";
+    })
+
+
     // Código específico para la página de login
     const loginForm = document.getElementById("formUserToken");
     const loginUserNameInput = document.getElementById("adminToken");
@@ -76,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((data) => {
           console.log("Success:", data);
           alert("Successful Register");
+          window.location.href = "login.html";
         })
         .catch((error) => {
           console.error("Error en el registro:", error);
