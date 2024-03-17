@@ -21,4 +21,10 @@ public class PaymentServiceImpl implements ServiceInterface<Payment>{
     public List<Payment> getAll() {
         return paymentRepository.findAll();
     }
+
+    public List<Object> averagePaymentByYear(String year){return paymentRepository.averagePaymentByYear(year);}
+
+    public List<Object> paymentsByCustomer(){return paymentRepository.paymentsByCustomer();}
+
+    public List<Object> paymentTotalPerYear(){return paymentRepository.paymentTotalPerYear();}
 }

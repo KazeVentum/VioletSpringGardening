@@ -38,6 +38,14 @@ public class EmployeeServiceImpl implements ServiceInterface<Employee> {
     public List<Object> employeesWithoutOfficeAndCustomer(){return employeeRepository.employeesWithoutOfficeAndCustomer();}
 
     public List<Object> employeesWithoutCustomersBoss(){return employeeRepository.employeesWithoutCustomersBoss();}
+
+
+    public List<Object> totalCustomersPerSalesRep(){return employeeRepository.totalCustomersPerSalesRep();}
+
+    //1. ¿Cuántos empleados hay en la compañía?
+//    public List<Object> totalEmployees(){
+//
+//    }
 }
 
 

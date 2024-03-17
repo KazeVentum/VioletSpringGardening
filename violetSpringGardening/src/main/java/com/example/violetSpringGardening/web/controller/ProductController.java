@@ -31,4 +31,7 @@ public class ProductController {
 
     @GetMapping("/productsWithoutOrdersDescription")
     public List<Object> productsWithoutOrdersDescription(){return productService.productsWithoutOrdersDescription();}
+
+    //@GetMapping("/varietyOfProductsInOrders")
+    //public List<Object> varietyOfProductsInOrders(){return productService.varietyOfProductsInOrders();}
 }

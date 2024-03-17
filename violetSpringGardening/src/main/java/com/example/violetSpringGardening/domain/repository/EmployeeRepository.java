@@ -65,4 +65,13 @@ public interface EmployeeRepository extends JpaRepository <Employee, Long> {
             "LEFT JOIN e.boss j " +
             "WHERE NOT EXISTS (SELECT 1 FROM Customer c WHERE c.repSales = e)")
     List<Object> employeesWithoutCustomersBoss();
+
+    //consultas resumen
+    //Devuelve el nombre de los representantes de ventas y el número de clientes al que atiende cada uno.
+    @Query("SELECT e.name, COUNT(c) " +
+            "FROM Employee e " +
+            "LEFT JOIN e.customers c " +
+            "GROUP BY e.name")
+    List<Object> totalCustomersPerSalesRep();
+
 }

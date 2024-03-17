@@ -3,10 +3,7 @@ package com.example.violetSpringGardening.web.controller;
 import com.example.violetSpringGardening.domain.service.PaymentServiceImpl;
 import com.example.violetSpringGardening.persistence.entity.Payment;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,4 +20,13 @@ public class PaymentController {
 
     @GetMapping("payments/all")
     List<Payment> getAllPayments(){return paymentService.getAll();}
+
+    @GetMapping("/averagePaymentByYear")
+    List<Object> averagePaymentByYear(@RequestParam String year){return paymentService.averagePaymentByYear(year);}
+
+    @GetMapping("/paymentsByCustomer")
+    List<Object> paymentsByCustomer(){return paymentService.paymentsByCustomer();}
+
+    @GetMapping("/paymentTotalPerYear")
+    List<Object> paymentTotalPerYear(){return paymentService.paymentTotalPerYear();}
 }

@@ -20,4 +20,6 @@ public class OrderServiceImpl implements ServiceInterface<Order>{
     public List<Order> getAll() {
         return orderRepository.findAll();
     }
+
+    public List<Object> orderByCity(){return orderRepository.orderByCity();}
 }
