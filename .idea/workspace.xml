@@ -5,17 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19bfb7e6-3805-45ed-9319-aba042d93014" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/resources/backgroundLogin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/resources/backgroundRegister.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/resources/violetSpringIcon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/violetSpringGardening/page/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/violetSpringGardening/page/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/violetSpringGardening/page/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/violetSpringGardening/page/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/violetSpringGardening/page/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/violetSpringGardening/page/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/violetSpringGardening/page/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/violetSpringGardening/page/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/repository/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/repository/CustomerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/violetSpringGardening/page/dashboardStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/violetSpringGardening/page/dashboardStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/violetSpringGardening/page/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/violetSpringGardening/page/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/violetSpringGardening/page/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/violetSpringGardening/page/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/repository/EmployeeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/repository/EmployeeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/repository/OfficeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/repository/OfficeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/repository/ProductRangeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/repository/ProductRangeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/web/controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/web/controller/EmployeeController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,9 +44,10 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Merging main",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/viole/Desktop/eSports"
+    "last_opened_file_path": "C:/Users/viole/Desktop/eSports",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RunManager">
