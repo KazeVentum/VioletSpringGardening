@@ -40,7 +40,7 @@ public interface EmployeeRepository extends JpaRepository <Employee, Long> {
 
 
     //17. Devuelve un listado que muestre solamente los empleados que no tienen un cliente asociado junto con los datos de la oficina donde trabajan.
-    @Query("SELECT e, o " +
+    @Query("SELECT e.name, e.lastName1, o.officeCode ,o.city, o.country " +
             "FROM Employee e " +
             "JOIN e.office o " +
             "WHERE NOT EXISTS (SELECT 1 FROM Customer c WHERE c.repSales = e)")

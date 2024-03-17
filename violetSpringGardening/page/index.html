@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="../src/main/resources/violetSpringIcon.png" type="image/png">
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 	<link rel="stylesheet" href="dashboardStyle.css">
 	<script src="main.js" defer type="module" async></script>
 	<title>VioletSpringGardening</title>
@@ -20,7 +21,6 @@
 			<li>
 				<a href="#"><i class='bx bxs-inbox icon' ></i> Customer <i class='bx bx-chevron-right icon-right' ></i></a>
 				<ul class="side-dropdown">			
-					
 					<li id="customersWithSalesRep_btn"><a href="#">Sales Represent</a></li>
 					<li id="customersThatHavePaid_btn"><a href="#">Paid Customers</a></li>
 					<li id="customersThatHaventPaid_btn"><a href="#">Unpaid Customers</a></li>
@@ -31,18 +31,18 @@
 					<li id="customersWithoutPayments_btn"><a href="#">Clients<br> without payments</a></li>
 					<li id="customersWithoutOrders_btn"><a href="#">Clients<br> without orders</a></li>
 					<li id="customersWithoutOrdersAndPayments_btn"><a href="#">Clients without<br> orders and payments</a></li>
-					<li id="customersWithOrdersButWithoutPayments_btn"><a href="#">Clients without<br> orders and payments</a></li>
-
-
+					<li id="customersWithOdersButWithoutPayments_btn"><a href="#">Clients with orders<br> but without payments</a></li>
 				</ul>
 			</li>
 			<li>
-				<a href="#"><i class='bx bxs-notepad icon' ></i> Forms <i class='bx bx-chevron-right icon-right' ></i></a>
+				<a href="#"><i class='bx bxs-inbox icon' ></i> Employee <i class='bx bx-chevron-right icon-right' ></i></a>
 				<ul class="side-dropdown">
-					<li><a href="#">Basic</a></li>
-					<li><a href="#">Select</a></li>
-					<li><a href="#">Checkbox</a></li>
-					<li><a href="#">Radio</a></li>
+					<li id="employeesWithTheirBoss_btn"><a href="#">Employees Boss</a></li>
+					<li id="employeesWithTheBossOfTheirBoss_btn"><a href="#">Employee's<br> boss's boss</a></li>
+					<li id="employeesWithoutOffice_btn"><a href="#">Employee's without<br> office</a></li>
+					<li id="employeesWithoutCustomer_btn"><a href="#">Employee's without<br> customer</a></li>
+					<li id="employeesOfficeWithoutCustomer_btn"><a href="#">Employee's office<br> without customer</a></li>
+
 				</ul>
 			</li>
 			<li class="divider" data-text="Single Table Queries">Single Table Queries</li>
@@ -50,7 +50,6 @@
 		</ul>
 	</section>
 	<!-- SIDEBAR -->
-
 	<!-- NAVBAR -->
 	<section id="content">
 		<!-- NAVBAR -->
