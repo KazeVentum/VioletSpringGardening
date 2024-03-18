@@ -57,4 +57,7 @@ public class CustomerController {
 
     @GetMapping("/customersWithOdersButWithoutPayments")
     public List<Object> customersWithOdersButWithoutPayments(){return customerService.customersWithOdersButWithoutPayments();}
+
+    @GetMapping("/customersPerCountry")
+    public List<Object> customersPerCountry(){return customerService.customersPerCountry();}
 }

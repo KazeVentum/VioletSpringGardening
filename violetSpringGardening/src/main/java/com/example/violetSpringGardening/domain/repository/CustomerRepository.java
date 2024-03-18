@@ -108,4 +108,12 @@ public interface CustomerRepository extends JpaRepository <Customer, Long> {
             "JOIN c.orders o " +
             "WHERE NOT EXISTS (SELECT 1 FROM Payment p WHERE p.customer = c)")
     List<Object> customersWithOdersButWithoutPayments();
+
+
+    // consultas resumen
+    //2. ¿Cuántos clientes tiene cada país?
+    @Query("SELECT c.country, COUNT(c) " +
+            "FROM Customer c " +
+            "GROUP BY c.country")
+    List<Object> customersPerCountry();
 }

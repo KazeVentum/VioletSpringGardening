@@ -1,7 +1,9 @@
 package com.example.violetSpringGardening.domain.service;
 
+import com.example.violetSpringGardening.domain.exceptions.ErrorResponses;
 import com.example.violetSpringGardening.domain.repository.CustomerRepository;
 import com.example.violetSpringGardening.persistence.entity.Customer;
+import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,4 +51,24 @@ public class CustomerServiceImpl implements ServiceInterface<Customer> {
     public List<Object> customersWithoutOrdersAndPayments(){return customerRepository.customersWithoutOrdersAndPayments();}
 
     public List<Object> customersWithOdersButWithoutPayments(){return customerRepository.customersWithOdersButWithoutPayments();}
+
+
+    public List<Object> customersPerCountry(){return customerRepository.customersPerCountry();}
+
+    //6. Calcula el número de clientes que tiene la empresa.
+//    public Long totalCustomers(){
+//        try {
+//            TypedQuery<Long> query = customerRepository.createQuery("SELECT COUNT(c) FROM Customer c", Long.class);
+//            return query.getSingleResult();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return new ErrorResponses("error");
+//        }
+//    }
+//    }
+
+    //10. Calcula el número de clientes que no tiene asignado representante de ventas.
+//    public List<Object> totalCustomersWithoutSalesRep(){
+//
+//    }
 }

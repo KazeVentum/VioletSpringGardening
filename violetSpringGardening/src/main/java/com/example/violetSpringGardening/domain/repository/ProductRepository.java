@@ -20,5 +20,13 @@ public interface ProductRepository extends JpaRepository <Product, Long> {
             "FROM Product p " +
             "WHERE p NOT IN (SELECT od.product FROM OrderDetail od)")
     List<Object> productsWithoutOrdersDescription();
+
+    //resumen
+    //Calcula el número de productos diferentes que hay en cada uno de los pedidos.
+//    @Query("SELECT o.orderCode, COUNT(DISTINCT od.product) " +
+//            "FROM Order o " +
+//            "JOIN o.orderDetails od " +
+//            "GROUP BY o.orderCode")
+//    List<Object> varietyOfProductsInOrders();
 }
 

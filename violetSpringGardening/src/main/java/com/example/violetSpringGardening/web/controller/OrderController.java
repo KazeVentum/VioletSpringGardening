@@ -25,4 +25,6 @@ public class OrderController {
     @GetMapping("/orders/all")
     public List<Order> getAllOrders(){return orderService.getAll();}
 
+    @GetMapping("/otderByCity")
+    public List<Object> orderByCity(){return orderService.orderByCity();}
 }

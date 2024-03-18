@@ -46,4 +46,7 @@ public class EmployeeController {
 
     @GetMapping("/employeesWithoutCustomersBoss")
     public List<Object> employeesWithoutCustomersBoss(){return employeeService.employeesWithoutCustomersBoss();}
+
+    @GetMapping("/totalCustomersPerSalesRep")
+    public List<Object> totalCustomersPerSalesRep(){return employeeService.totalCustomersPerSalesRep();}
 }
