@@ -8,6 +8,17 @@ import java.util.List;
 
 public interface EmployeeRepository extends JpaRepository <Employee, Long> {
 
+    // Devuelve un listado con el nombre, apellidos y puesto de aquellos empleados que no sean representantes de ventas.
+    //List<Object> findByPositionNotLike(String position);
+
+    //1. ¿Cuántos empleados hay en la compañía?
+    //long count();
+
+
+    // Devuelve un listado con el nombre, apellidos y email de los empleados cuyo jefe tiene un código de jefe igual a 7.
+
+    //Devuelve el nombre del puesto, nombre, apellidos y email del jefe de la empresa.
+
     //8. Devuelve un listado con el nombre de los empleados junto con el nombre de sus jefes
     @Query("SELECT e.name AS nombreEmpleado, j.name AS nombreJefe " +
             "FROM Employee e " +
@@ -15,7 +26,7 @@ public interface EmployeeRepository extends JpaRepository <Employee, Long> {
     List<Object> employeesWithTheirBoss();
 
 
-    //9.Devuelve un listado que muestre el nombre de cada empleados, el nombre de su jefe y el nombre del jefe de sus jefe.
+    //9. Devuelve un listado que muestre el nombre de cada empleados, el nombre de su jefe y el nombre del jefe de sus jefe.
     @Query("SELECT CONCAT(e.name, ' ', e.lastName1, ' ', e.lastName2) AS nombreEmpleado, " +
             "       CONCAT(j.name, ' ', j.lastName1, ' ', j.lastName2) AS nombreJefe, " +
             "       CONCAT(j2.name, ' ', j2.lastName1, ' ', j2.lastName2) AS nombreJefeDelJefe " +

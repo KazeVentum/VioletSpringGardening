@@ -1,6 +1,7 @@
 package com.example.violetSpringGardening.domain.repository;
 
 import com.example.violetSpringGardening.persistence.entity.Customer;
+import com.example.violetSpringGardening.persistence.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -9,6 +10,29 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 
 public interface CustomerRepository extends JpaRepository <Customer, Long> {
+
+    // Devuelve un listado con el nombre de los todos los clientes españoles.
+    //List<Object> findByCountryIgnoreCase(String country);
+
+    // Devuelve un listado con todos los clientes que sean de la ciudad de Madrid y cuyo representante de ventas tenga el código de empleado 30.
+    //List<Object> findDistinctByCityAndSalesRepresentativeEmployeeCode(String city, Employee employeeCode);
+
+
+    //6. Calcula el número de clientes que tiene la empresa.
+//    public Long totalCustomers(){
+//    }
+
+    //10. Calcula el número de clientes que no tiene asignado representante de ventas.
+//    public List<Object> totalCustomersWithoutSalesRep(){
+//
+//    }
+
+//    1. ¿Cuántos clientes existen con domicilio en una ciudad especifica?
+//
+//
+//    2. ¿Calcula cuántos clientes tiene cada una de las ciudades que empiezan por una letra específica?
+
+    //Devuelve un listado con el código de cliente de aquellos clientes que realizaron algún pago en 2008. Tenga en cuenta que deberá eliminar aquellos códigos de cliente que aparezcan repetidos
 
     //1. Obtén un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas.
 

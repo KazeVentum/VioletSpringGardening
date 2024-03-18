@@ -29,4 +29,13 @@ public class PaymentController {
 
     @GetMapping("/paymentTotalPerYear")
     List<Object> paymentTotalPerYear(){return paymentService.paymentTotalPerYear();}
+
+    @GetMapping("/bussinessInvoicing")
+    List<Object> bussinessInvoicing(){return paymentService.bussinessInvoicing();}
+
+    @GetMapping("/bussinessInvoicingPerProduct")
+    List<Object> bussinessInvoicingPerProduct(){return paymentService.bussinessInvoicingPerProduct();}
+
+    @GetMapping("/bussinessInvoicingByProductCode")
+    List<Object> bussinessInvoicingByProductCode(@RequestParam String startsWith){return paymentService.bussinessInvoicingByProductCode(startsWith);}
 }

@@ -34,41 +34,45 @@ public class CustomerServiceImpl implements ServiceInterface<Customer> {
         return customerRepository.customersThatHavePaid();
     }
 
-    public List<Object> customersThatHaventPaid(){return customerRepository.customersThatHaventPaid();}
+    public List<Object> customersThatHaventPaid() {
+        return customerRepository.customersThatHaventPaid();
+    }
 
-    public List<Object> customersThatHavePaidAndOfficeCity(){return customerRepository.customersThatHavePaidAndOfficeCity();}
+    public List<Object> customersThatHavePaidAndOfficeCity() {
+        return customerRepository.customersThatHavePaidAndOfficeCity();
+    }
 
-    public List<Object> customersThatHaventPaidAndOfficeCity(){return customerRepository.customersThatHaventPaidAndOfficeCity();}
+    public List<Object> customersThatHaventPaidAndOfficeCity() {
+        return customerRepository.customersThatHaventPaidAndOfficeCity();
+    }
 
-    public List<Object> allCustomersWithSalesRepCity(){return customerRepository.allCustomersWithSalesRepCity();}
+    public List<Object> allCustomersWithSalesRepCity() {
+        return customerRepository.allCustomersWithSalesRepCity();
+    }
 
-    public List<Object> customersWithLateDeliveries(){return customerRepository.customersWithLateDeliveries();}
+    public List<Object> customersWithLateDeliveries() {
+        return customerRepository.customersWithLateDeliveries();
+    }
 
-    public List<Object> customersWithoutPayments(){return customerRepository.customersWithoutPayments();}
+    public List<Object> customersWithoutPayments() {
+        return customerRepository.customersWithoutPayments();
+    }
 
-    public List<Object> customersWithoutOrders(){return customerRepository.customersWithoutOrders();}
+    public List<Object> customersWithoutOrders() {
+        return customerRepository.customersWithoutOrders();
+    }
 
-    public List<Object> customersWithoutOrdersAndPayments(){return customerRepository.customersWithoutOrdersAndPayments();}
+    public List<Object> customersWithoutOrdersAndPayments() {
+        return customerRepository.customersWithoutOrdersAndPayments();
+    }
 
-    public List<Object> customersWithOdersButWithoutPayments(){return customerRepository.customersWithOdersButWithoutPayments();}
+    public List<Object> customersWithOdersButWithoutPayments() {
+        return customerRepository.customersWithOdersButWithoutPayments();
+    }
 
 
-    public List<Object> customersPerCountry(){return customerRepository.customersPerCountry();}
+    public List<Object> customersPerCountry() {
+        return customerRepository.customersPerCountry();
+    }
 
-    //6. Calcula el número de clientes que tiene la empresa.
-//    public Long totalCustomers(){
-//        try {
-//            TypedQuery<Long> query = customerRepository.createQuery("SELECT COUNT(c) FROM Customer c", Long.class);
-//            return query.getSingleResult();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return new ErrorResponses("error");
-//        }
-//    }
-//    }
-
-    //10. Calcula el número de clientes que no tiene asignado representante de ventas.
-//    public List<Object> totalCustomersWithoutSalesRep(){
-//
-//    }
 }

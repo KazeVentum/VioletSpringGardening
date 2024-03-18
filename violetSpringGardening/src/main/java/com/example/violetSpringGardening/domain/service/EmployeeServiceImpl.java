@@ -25,27 +25,37 @@ public class EmployeeServiceImpl implements ServiceInterface<Employee> {
         return employeeRepository.findAll();
     }
 
-    public List<Object> employeesWithTheirBoss(){return employeeRepository.employeesWithTheirBoss();}
+    public List<Object> employeesWithTheirBoss() {
+        return employeeRepository.employeesWithTheirBoss();
+    }
 
-    public List<Object> employeesWithTheBossOfTheirBoss(){return employeeRepository.employeesWithTheBossOfTheirBoss();}
+    public List<Object> employeesWithTheBossOfTheirBoss() {
+        return employeeRepository.employeesWithTheBossOfTheirBoss();
+    }
 
-    public List<Object> employeesWithoutOffice(){return employeeRepository.employeesWithoutOffice();}
+    public List<Object> employeesWithoutOffice() {
+        return employeeRepository.employeesWithoutOffice();
+    }
 
-    public List<Object> employeesWithoutCustomer(){return employeeRepository.employeesWithoutCustomer();}
+    public List<Object> employeesWithoutCustomer() {
+        return employeeRepository.employeesWithoutCustomer();
+    }
 
-    public List<Object> employeesOfficeWithoutCustomer(){return employeeRepository.employeesOfficeWithoutCustomer();}
+    public List<Object> employeesOfficeWithoutCustomer() {
+        return employeeRepository.employeesOfficeWithoutCustomer();
+    }
 
-    public List<Object> employeesWithoutOfficeAndCustomer(){return employeeRepository.employeesWithoutOfficeAndCustomer();}
+    public List<Object> employeesWithoutOfficeAndCustomer() {
+        return employeeRepository.employeesWithoutOfficeAndCustomer();
+    }
 
-    public List<Object> employeesWithoutCustomersBoss(){return employeeRepository.employeesWithoutCustomersBoss();}
+    public List<Object> employeesWithoutCustomersBoss() {
+        return employeeRepository.employeesWithoutCustomersBoss();
+    }
 
 
-    public List<Object> totalCustomersPerSalesRep(){return employeeRepository.totalCustomersPerSalesRep();}
-
-    //1. ¿Cuántos empleados hay en la compañía?
-//    public List<Object> totalEmployees(){
-//
-//    }
+    public List<Object> totalCustomersPerSalesRep() {
+        return employeeRepository.totalCustomersPerSalesRep();
+    }
 }
-
 

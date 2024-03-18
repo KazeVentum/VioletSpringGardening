@@ -28,4 +28,12 @@ public class ProductServiceImpl implements ServiceInterface<Product>{
     public List<Object> productsWithoutOrdersDescription(){return productRepository.productsWithoutOrdersDescription();}
 
     //public List<Object> varietyOfProductsInOrders(){return productRepository.varietyOfProductsInOrders();}
+
+    public List<Object> totalProductsByOrder(){return productRepository.totalProductsByOrder();}
+
+    public List<Object> bestSellers(){return productRepository.bestSellers();}
+
+    //Lista las ventas totales de los productos que hayan facturado más de 3000 euros. Se mostrará el nombre, unidades vendidas, total facturado y total facturado con impuestos (21% IVA).
+
+    //Calcula el precio de venta del producto más caro y más barato en una misma consulta.
 }

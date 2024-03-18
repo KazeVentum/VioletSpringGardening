@@ -34,4 +34,10 @@ public class ProductController {
 
     //@GetMapping("/varietyOfProductsInOrders")
     //public List<Object> varietyOfProductsInOrders(){return productService.varietyOfProductsInOrders();}
+
+    @GetMapping("/totalProductsByOrder")
+    public List<Object> totalProductsByOrder(){return productService.totalProductsByOrder();}
+
+    @GetMapping("/bestSellers")
+    public List<Object> bestSellers(){return productService.bestSellers();}
 }

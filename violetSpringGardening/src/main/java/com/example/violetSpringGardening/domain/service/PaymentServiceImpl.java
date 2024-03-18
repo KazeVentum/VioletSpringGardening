@@ -27,4 +27,11 @@ public class PaymentServiceImpl implements ServiceInterface<Payment>{
     public List<Object> paymentsByCustomer(){return paymentRepository.paymentsByCustomer();}
 
     public List<Object> paymentTotalPerYear(){return paymentRepository.paymentTotalPerYear();}
+
+    public List<Object> bussinessInvoicing(){return paymentRepository.bussinessInvoicing();}
+
+    public List<Object> bussinessInvoicingPerProduct(){return paymentRepository.bussinessInvoicingPerProduct();}
+
+    public List<Object> bussinessInvoicingByProductCode(String startsWith){return paymentRepository.bussinessInvoicingByProductCode(startsWith);}
+
 }

@@ -28,5 +28,19 @@ public interface ProductRepository extends JpaRepository <Product, Long> {
 //            "JOIN o.orderDetails od " +
 //            "GROUP BY o.orderCode")
 //    List<Object> varietyOfProductsInOrders();
+
+
+    //Calcula la suma de la cantidad total de todos los productos que aparecen en cada uno de los pedidos.
+    @Query("SELECT SUM(od.quantity) FROM OrderDetail od GROUP BY od.order")
+    List<Object> totalProductsByOrder();
+
+    //Devuelve un listado de los 20 productos más vendidos y el número total de unidades que se han vendido de cada uno. El listado deberá estar ordenado por el número total de unidades vendidas.
+    @Query("SELECT od.product.productCode, " +
+            "       SUM(od.quantity) AS totalUnitsSold " +
+            "FROM OrderDetail od " +
+            "GROUP BY od.product.productCode " +
+            "ORDER BY totalUnitsSold DESC " +
+            "LIMIT 20")
+    List<Object> bestSellers();
 }
 

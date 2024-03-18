@@ -8,6 +8,12 @@ import java.util.List;
 
 public interface OfficeRepository extends JpaRepository <Office, Long> {
 
+    // Devuelve un listado con la ciudad y el teléfono de las oficinas de España.
+    List<Object> findByCountryIgnoreCase(String country);
+
+
+    // Devuelve un listado con el código de oficina y la ciudad donde hay oficinas.
+
     //6. Lista la dirección de las oficinas que tengan clientes en una ciudad especifica
     @Query("SELECT DISTINCT o.addressLine1, o.addressLine2, o.city, o.region, o.country, o.zipCode " +
             "FROM Office o " +
