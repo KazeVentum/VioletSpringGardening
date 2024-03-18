@@ -59,11 +59,11 @@ public interface EmployeeRepository extends JpaRepository <Employee, Long> {
 
 
     //18. Devuelve un listado que muestre los empleados que no tienen una oficina asociada y los que no tienen un cliente asociado.
-    @Query("(SELECT e, NULL " +
+    @Query("(SELECT e.name, e.lastName1, e.lastName2, NULL " +
             "FROM Employee e " +
             "WHERE e.office IS NULL) " +
             "UNION " +
-            "(SELECT e, NULL " +
+            "(SELECT e.name, e.lastName1,e.lastName2, NULL " +
             "FROM Employee e " +
             "WHERE NOT EXISTS (SELECT 1 FROM Customer c WHERE c.repSales = e))")
     List<Object> employeesWithoutOfficeAndCustomer();
@@ -71,7 +71,7 @@ public interface EmployeeRepository extends JpaRepository <Employee, Long> {
 
     //23. Devuelve un listado con los datos de los empleados que no tienen clientes asociados y el nombre de su jefe asociado.
 
-    @Query("SELECT e, j.name " +
+    @Query("SELECT e.name, e.lastName1, j.name, j.lastName1 " +
             "FROM Employee e " +
             "LEFT JOIN e.boss j " +
             "WHERE NOT EXISTS (SELECT 1 FROM Customer c WHERE c.repSales = e)")

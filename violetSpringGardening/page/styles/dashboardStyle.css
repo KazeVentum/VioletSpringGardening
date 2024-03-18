@@ -77,7 +77,7 @@ li {
 	top: 0;
 	left: 0;
 	z-index: 100;
-	background: var(--light);
+	background: var(--lightMagenta);
 	transition: all .3s ease;
 	padding: 0 6px;
 }
@@ -400,7 +400,16 @@ transform: translateX(45px);
 .bi-person-dash {
 	transform: translateX(50px);
 }
-  
+
+.bi-person-vcard-fill {
+	transform: translateX(50px);
+}
+
+.bi-person-standing {
+	transform: translateX(50px);
+}
+
+
 
 
 
