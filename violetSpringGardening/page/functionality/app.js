@@ -1,5 +1,6 @@
 import * as Employee from "../entities/Employee.js";
 import * as Customer from "../entities/Customer.js";
+import * as Office from "../entities/Office.js";
 
 document.getElementById("customersWithSalesRep_btn").addEventListener("click", function() {
     Customer.customersWithSalesRep_title();
@@ -91,4 +92,13 @@ document.getElementById("employeesWithoutOfficeAndCustomer_btn").addEventListene
 document.getElementById("employeesWithoutCustomersBoss_btn").addEventListener("click", function() {
     Employee.employeesWithoutCustomersBoss_title();
     Employee.employeesWithoutCustomersBoss();
+})
+
+// Office Query
+document.getElementById("officesWithClientsInSpecificCity_btn").addEventListener("click", function() {
+    Office.officesWithClientsInSpecificCity_form();
+    Office.officesWithClientsInSpecificCity_title();
+    document.getElementById("searchCityName_btn").addEventListener("click", function() {
+        Office.officesWithClientsInSpecificCity();
+    })
 })
