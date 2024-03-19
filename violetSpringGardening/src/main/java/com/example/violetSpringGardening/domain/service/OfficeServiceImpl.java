@@ -26,4 +26,6 @@ public class OfficeServiceImpl implements ServiceInterface<Office> {
     public List<Object> officesWithClientsInSpecificCity(String cityName){return officeRepository.officesWithClientsInSpecificCity(cityName);}
 
 //    public List<Object> officesWithoutSalesRepByRange(String productRange){return officeRepository.officesWithoutSalesRepByRange(productRange);}
+
+    public List<Object> findOfficeCodesAndCities(){return officeRepository.findOfficeCodesAndCities();}
 }

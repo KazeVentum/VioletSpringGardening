@@ -53,9 +53,14 @@ public class EmployeeServiceImpl implements ServiceInterface<Employee> {
         return employeeRepository.employeesWithoutCustomersBoss();
     }
 
-
     public List<Object> totalCustomersPerSalesRep() {
         return employeeRepository.totalCustomersPerSalesRep();
     }
+
+    public List<Object> findNameLastnameByBoss(int bossCode){return employeeRepository.findNameLastnameByBoss(bossCode);}
+
+    public long count(){return employeeRepository.count();}
+
+    public List<Object> findCompanyBoss(){return employeeRepository.findCompanyBoss();}
 }
 

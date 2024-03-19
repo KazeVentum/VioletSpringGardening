@@ -38,4 +38,12 @@ public class PaymentController {
 
     @GetMapping("/bussinessInvoicingByProductCode")
     List<Object> bussinessInvoicingByProductCode(@RequestParam String startsWith){return paymentService.bussinessInvoicingByProductCode(startsWith);}
+
+
+    @GetMapping("/findPaymentsYearMethod")
+    List<Object> findPaymentsYearMethod(@RequestParam String method, @RequestParam String year){return paymentService.findPaymentsYearMethod(method, year);}
+
+    @GetMapping("/findClientCodesPaymentYear")
+    List<Object> findClientCodesPaymentYear(String year){return paymentService.findClientCodesPaymentYear(year);}
+
 }

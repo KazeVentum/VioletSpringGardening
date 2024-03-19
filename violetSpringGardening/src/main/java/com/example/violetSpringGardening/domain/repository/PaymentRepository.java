@@ -8,9 +8,17 @@ import java.util.List;
 
 public interface PaymentRepository extends JpaRepository <Payment, Long> {
 
-    //Devuelve un listado con todos los pagos que se realizaron en el año 2008 mediante Paypal. Ordene el resultado de mayor a menor.
-
     //Devuelve un listado con todas las formas de pago que aparecen en la tabla pago. Tenga en cuenta que no deben aparecer formas de pago repetidas.
+    List<Payment> findAllDistinctByPaymentMethodLikeIgnoreCase(String payment);//objeto completo
+
+    //Devuelve un listado con todos los pagos que se realizaron en un año especifico mediante un metodo de pago especifico. Ordene el resultado de mayor a menor.
+    @Query("SELECT p.customer.customerCode , p.paymentMethod, p.transactionId, p.paymentDate, p.total FROM Payment p WHERE LOWER(p.paymentMethod) = LOWER(?1) AND YEAR(p.paymentDate) = ?2 ORDER BY p.total")
+    List<Object> findPaymentsYearMethod(String method, String year);
+
+    //Devuelve un listado con el código de cliente de aquellos clientes que realizaron algún pago en un año especifico. Tenga en cuenta que deberá eliminar aquellos códigos de cliente que aparezcan repetidos
+    @Query("SELECT DISTINCT p.customer.customerCode FROM Payment p WHERE YEAR(p.paymentDate) = ?1")
+    List<Object> findClientCodesPaymentYear(String year);
+
 
     //3. ¿Cuál fue el pago medio en un año específico?
     @Query("SELECT AVG(p.total) " +

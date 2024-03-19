@@ -23,11 +23,11 @@ public interface ProductRepository extends JpaRepository <Product, Long> {
 
     //resumen
     //Calcula el número de productos diferentes que hay en cada uno de los pedidos.
-//    @Query("SELECT o.orderCode, COUNT(DISTINCT od.product) " +
-//            "FROM Order o " +
-//            "JOIN o.orderDetails od " +
-//            "GROUP BY o.orderCode")
-//    List<Object> varietyOfProductsInOrders();
+    @Query("SELECT o.orderCode, COUNT(DISTINCT od.product) " +
+            "FROM OrderDetail od " +
+            "JOIN od.order o " +
+            "GROUP BY o.orderCode")
+    List<Object> varietyOfProductsInOrders();
 
 
     //Calcula la suma de la cantidad total de todos los productos que aparecen en cada uno de los pedidos.
@@ -42,5 +42,9 @@ public interface ProductRepository extends JpaRepository <Product, Long> {
             "ORDER BY totalUnitsSold DESC " +
             "LIMIT 20")
     List<Object> bestSellers();
+
+    //Lista las ventas totales de los productos que hayan facturado más de 3000 euros. Se mostrará el nombre, unidades vendidas, total facturado y total facturado con impuestos (21% IVA).
+
+    //Calcula el precio de venta del producto más caro y más barato en una misma consulta.
 }
 

@@ -34,4 +34,10 @@ public class PaymentServiceImpl implements ServiceInterface<Payment>{
 
     public List<Object> bussinessInvoicingByProductCode(String startsWith){return paymentRepository.bussinessInvoicingByProductCode(startsWith);}
 
+
+
+    public List<Object> findPaymentsYearMethod(String method, String year){return paymentRepository.findPaymentsYearMethod(method, year);}
+
+    public List<Object> findClientCodesPaymentYear(String year){return paymentRepository.findClientCodesPaymentYear(year);}
+
 }

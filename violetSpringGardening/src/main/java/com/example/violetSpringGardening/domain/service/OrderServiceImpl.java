@@ -22,4 +22,13 @@ public class OrderServiceImpl implements ServiceInterface<Order>{
     }
 
     public List<Object> orderByCity(){return orderRepository.orderByCity();}
+
+
+    public List<Object> orderStatus(){return orderRepository.orderStatus();}
+
+    public List<Object> lateOrders(){return orderRepository.lateOrders();}
+
+    public List<Object> ordersRejectedInYear(String year){return orderRepository.ordersRejectedInYear(year);}
+
+    //public List<Object> ordersByYear(String year){return orderRepository.ordersByYear(year);}
 }

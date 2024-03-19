@@ -4,10 +4,7 @@ import com.example.violetSpringGardening.domain.service.OfficeServiceImpl;
 import com.example.violetSpringGardening.domain.service.OrderServiceImpl;
 import com.example.violetSpringGardening.persistence.entity.Order;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,4 +24,18 @@ public class OrderController {
 
     @GetMapping("/otderByCity")
     public List<Object> orderByCity(){return orderService.orderByCity();}
+
+
+    @GetMapping("/orderStatus")
+    public List<Object> orderStatus(){return orderService.orderStatus();}
+
+    @GetMapping("/lateOrders")
+    public List<Object> lateOrders(){return orderService.lateOrders();}
+
+    @GetMapping("/ordersRejectedInYear")
+    public List<Object> ordersRejectedInYear(@RequestParam String year){return orderService.ordersRejectedInYear(year);}
+
+    //@GetMapping("/ordersByYear")
+    //public List<Object> ordersByYear(@RequestParam String year){return orderService.ordersByYear(year);}
+
 }

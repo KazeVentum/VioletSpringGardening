@@ -75,4 +75,11 @@ public class CustomerServiceImpl implements ServiceInterface<Customer> {
         return customerRepository.customersPerCountry();
     }
 
+    public List<Object> totalCustomersWithoutEmployee(){return customerRepository.totalCustomersWithoutEmployee();}
+
+    public List<Object> totalCustomersByCity(String cityLetter){return customerRepository.totalCustomersByCity(cityLetter);}
+
+    public long countByCityLikeIgnoreCase(String city){return customerRepository.countByCityLikeIgnoreCase(city);}
+
+    public long count(){return customerRepository.count();}
 }

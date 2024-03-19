@@ -9,15 +9,18 @@ import java.util.List;
 public interface EmployeeRepository extends JpaRepository <Employee, Long> {
 
     // Devuelve un listado con el nombre, apellidos y puesto de aquellos empleados que no sean representantes de ventas.
-    //List<Object> findByPositionNotLike(String position);
+    List<Employee> findAllByChargeNotLike(String charge); //objeto completo
 
     //1. ¿Cuántos empleados hay en la compañía?
-    //long count();
-
+    long count();
 
     // Devuelve un listado con el nombre, apellidos y email de los empleados cuyo jefe tiene un código de jefe igual a 7.
+    @Query("SELECT e.name, e.lastName1, e.lastName2 FROM Employee e WHERE e.boss.employeeCode = :bossCode")
+    List<Object> findNameLastnameByBoss(int bossCode);
 
     //Devuelve el nombre del puesto, nombre, apellidos y email del jefe de la empresa.
+    @Query("SELECT e.name, e.lastName1, e.lastName2, e.email, e.charge FROM Employee e WHERE e.boss.employeeCode IS NULL")
+    List<Object> findCompanyBoss();
 
     //8. Devuelve un listado con el nombre de los empleados junto con el nombre de sus jefes
     @Query("SELECT e.name AS nombreEmpleado, j.name AS nombreJefe " +

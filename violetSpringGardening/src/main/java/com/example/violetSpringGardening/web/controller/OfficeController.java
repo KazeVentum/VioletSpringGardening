@@ -27,4 +27,7 @@ public class OfficeController {
 
 //    @GetMapping("/officesWithoutSalesRepByRange")
 //    public List<Object> officesWithoutSalesRepByRange(@RequestParam String productRange){return officeService.officesWithoutSalesRepByRange(productRange);}
+
+    @GetMapping("/findOfficeCodesAndCities")
+    public List<Object> findOfficeCodesAndCities(){return officeService.findOfficeCodesAndCities();}
 }

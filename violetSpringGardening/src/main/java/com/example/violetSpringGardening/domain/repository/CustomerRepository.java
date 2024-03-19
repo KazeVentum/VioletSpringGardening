@@ -12,27 +12,26 @@ import java.util.List;
 public interface CustomerRepository extends JpaRepository <Customer, Long> {
 
     // Devuelve un listado con el nombre de los todos los clientes españoles.
-    //List<Object> findByCountryIgnoreCase(String country);
+    List<Customer> findAllByCountry(String country); //objeto completo
 
     // Devuelve un listado con todos los clientes que sean de la ciudad de Madrid y cuyo representante de ventas tenga el código de empleado 30.
-    //List<Object> findDistinctByCityAndSalesRepresentativeEmployeeCode(String city, Employee employeeCode);
-
+    //List<Customer> findAllDistinctByCityAndRepSales(String city, Employee employeeCode);
 
     //6. Calcula el número de clientes que tiene la empresa.
-//    public Long totalCustomers(){
-//    }
+    long count();
 
     //10. Calcula el número de clientes que no tiene asignado representante de ventas.
-//    public List<Object> totalCustomersWithoutSalesRep(){
-//
-//    }
+    @Query("SELECT COUNT(*)  FROM Customer c WHERE c.repSales IS NULL")
+    List<Object> totalCustomersWithoutEmployee();
 
-//    1. ¿Cuántos clientes existen con domicilio en una ciudad especifica?
-//
-//
-//    2. ¿Calcula cuántos clientes tiene cada una de las ciudades que empiezan por una letra específica?
+    // ¿Cuántos clientes existen con domicilio en una ciudad especifica?
+    long countByCityLikeIgnoreCase(String city);
 
-    //Devuelve un listado con el código de cliente de aquellos clientes que realizaron algún pago en 2008. Tenga en cuenta que deberá eliminar aquellos códigos de cliente que aparezcan repetidos
+   // ¿Calcula cuántos clientes tiene cada una de las ciudades que empiezan por una letra específica?
+    @Query("SELECT COUNT(c) , c.city FROM Customer c group by c.city  HAVING LOWER(c.city) LIKE LOWER(:cityLetter) || '%'")
+    List<Object> totalCustomersByCity(String cityLetter);
+
+
 
     //1. Obtén un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas.
 

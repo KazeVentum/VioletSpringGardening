@@ -4,10 +4,7 @@ import com.example.violetSpringGardening.domain.service.CustomerServiceImpl;
 import com.example.violetSpringGardening.domain.service.ProductRangeServiceImpl;
 import com.example.violetSpringGardening.persistence.entity.ProductRange;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,4 +25,7 @@ public class ProductRangeController {
 
 //    @GetMapping("/productRangesWithEachCustomer")
 //    public List<Object> productRangesWithEachCustomer(){return productRangeService.productRangesWithEachCustomer();}
+
+    @GetMapping("/productsBySpecificRange")
+    public List<Object> productsBySpecificRange(@RequestParam String specificRange){return productRangeService.productsBySpecificRange(specificRange);}
 }

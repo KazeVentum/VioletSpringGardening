@@ -49,4 +49,10 @@ public class EmployeeController {
 
     @GetMapping("/totalCustomersPerSalesRep")
     public List<Object> totalCustomersPerSalesRep(){return employeeService.totalCustomersPerSalesRep();}
+
+    @GetMapping("/findCompanyBoss")
+    public List<Object> findCompanyBoss(){return employeeService.findCompanyBoss();}
+
+    @GetMapping("/countEmployees")
+    public long count(){return employeeService.count();}
 }

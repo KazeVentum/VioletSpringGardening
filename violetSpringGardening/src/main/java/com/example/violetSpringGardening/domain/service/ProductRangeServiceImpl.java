@@ -24,4 +24,6 @@ public class ProductRangeServiceImpl implements ServiceInterface<ProductRange>{
     }
 
 //    public List<Object> productRangesWithEachCustomer(){return productRangeRepository.productRangesWithEachCustomer();}
+
+    public List<Object> productsBySpecificRange(String specificRange){return productRangeRepository.productsBySpecificRange(specificRange);}
 }
