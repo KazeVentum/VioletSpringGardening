@@ -317,8 +317,6 @@ main .card .head p {
 	font-size: 15px;
 }
 
-
-
 main .data {
 	display: flex;
 	grid-gap: 20px;
@@ -335,11 +333,46 @@ main .data .content-data {
 	
 }
 
+.card input {
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.07);
+    border-radius: 5px;
+    border: 2px solid rgba(67, 67, 67, 0.367);
+    padding: 0 10px;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 300;
+    color: #ffffff;
+}
+
+.card input::placeholder {
+    color: #2b2b2b92;
+}
+
+.card button {
+    width: 100%;
+    background-color: var(--lightMagenta);
+    color: #ececec;
+    padding: 9px 0;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+    background-color: #873ab0ed;
+    color: #ffffff;
+}
+
 
 /* Error Message */
 
 .message {
-
 	height: 100%;
 	margin: 0;
 	display: flex;
@@ -408,6 +441,16 @@ transform: translateX(45px);
 .bi-person-standing {
 	transform: translateX(50px);
 }
+.bi-list-ol {
+	transform: translateX(90px);
+}
+
+#quantity {
+	transform: translateX(50px);
+	color: #81689D;
+	font-size: 50px;
+}
+  
 
 
 
