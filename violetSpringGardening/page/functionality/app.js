@@ -57,6 +57,11 @@ document.getElementById("customersWithOdersButWithoutPayments_btn").addEventList
     Customer.customersWithOdersButWithoutPayments();
 });
 
+document.getElementById("customersPerCountry_btn").addEventListener("click", function() {
+    Customer.customersPerCountry_title();
+    Customer.customersPerCountry();
+});
+
 
 // EMPLOYEE QUERIES
 document.getElementById("employeesWithTheirBoss_btn").addEventListener("click", function() {
@@ -93,6 +98,7 @@ document.getElementById("employeesWithoutCustomersBoss_btn").addEventListener("c
     Employee.employeesWithoutCustomersBoss_title();
     Employee.employeesWithoutCustomersBoss();
 })
+
 
 // Office Query
 document.getElementById("officesWithClientsInSpecificCity_btn").addEventListener("click", function() {
