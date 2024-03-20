@@ -1,7 +1,9 @@
 import * as Employee from "../entities/Employee.js";
 import * as Customer from "../entities/Customer.js";
 import * as Office from "../entities/Office.js";
+import * as Payment from "../entities/Payment.js";
 
+// Customer Queries
 document.getElementById("customersWithSalesRep_btn").addEventListener("click", function() {
     Customer.customersWithSalesRep_title();
     Customer.customersWithSalesRep();
@@ -106,5 +108,14 @@ document.getElementById("officesWithClientsInSpecificCity_btn").addEventListener
     Office.officesWithClientsInSpecificCity_title();
     document.getElementById("searchCityName_btn").addEventListener("click", function() {
         Office.officesWithClientsInSpecificCity();
+    })
+})
+
+// Payment Query
+document.getElementById("averagePaymentByYear_btn").addEventListener("click", function() {
+    Payment.averagePaymentByYear_form();
+    Payment.averagePaymentByYear_title();
+    document.getElementById("searchYearName_btn").addEventListener("click", function() {
+        Payment.averagePaymentByYear();
     })
 })

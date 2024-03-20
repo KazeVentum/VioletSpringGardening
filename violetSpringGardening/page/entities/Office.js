@@ -1,3 +1,25 @@
+export function officesWithClientsInSpecificCity_form(){
+    const clientCardsContainer = document.getElementById('showData');
+    let html = '';
+        html += `
+            <div class="card">
+                <div class="head">
+                    <div>
+                        <h1>City Name:</h1>
+                        <input class="controlsTwo" type="text" class="form-control" id="inputCity" placeholder="Write here">
+                        <br>
+                        <div id="buttom">
+                            <button class="btn-formulary" id="searchCityName_btn">Send</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        `;
+    clientCardsContainer.innerHTML = html;
+}
+
+
 export function officesWithClientsInSpecificCity() {
     const token = sessionStorage.getItem('jwtToken'); 
     const FormCity = document.getElementById('inputCity')
@@ -63,29 +85,6 @@ export function officesWithClientsInSpecificCity() {
     })
     .catch(error => console.error('Error:', error));
 }
-
-export function officesWithClientsInSpecificCity_form(){
-    const clientCardsContainer = document.getElementById('showData');
-    let html = '';
-        html += `
-            <div class="card">
-                <div class="head">
-                    <div>
-                        <h1>City Name:</h1>
-                        <input class="controlsTwo" type="text" class="form-control" id="inputCity" placeholder="Write here">
-                        <br>
-                        <div id="buttom">
-                            <button class="btn-formulary" id="searchCityName_btn">Send</button>
-                        </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-        `;
-    clientCardsContainer.innerHTML = html;
-}
-
-
 
 export function officesWithClientsInSpecificCity_title(){
     var title = document.querySelector("#officesWithClientsInSpecificCity_btn a");

@@ -344,11 +344,11 @@ main .data .content-data {
     margin-top: 20px;
     font-size: 16px;
     font-weight: 300;
-    color: #ffffff;
+    color: var(--violet)
 }
 
 .card input::placeholder {
-    color: #2b2b2b92;
+    color: #1a1b1992;
 }
 
 .card button {

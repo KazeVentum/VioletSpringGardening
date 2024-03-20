@@ -21,6 +21,7 @@ public class PaymentController {
     @GetMapping("payments/all")
     List<Payment> getAllPayments(){return paymentService.getAll();}
 
+    // Done
     @GetMapping("/averagePaymentByYear")
     List<Object> averagePaymentByYear(@RequestParam String year){return paymentService.averagePaymentByYear(year);}
 
