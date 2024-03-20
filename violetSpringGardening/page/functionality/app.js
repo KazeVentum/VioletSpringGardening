@@ -161,6 +161,17 @@ document.getElementById("averagePaymentByYear_btn").addEventListener("click", fu
     })
 })
 
+document.getElementById("paymentsByCustomer_btn").addEventListener("click", function() {
+    Payment.paymentsByCustomer_title();
+    Payment.paymentsByCustomer();
+})
+
+document.getElementById("paymentTotalPerYear_btn").addEventListener("click", function() {
+    Payment.paymentTotalPerYear_title();
+    Payment.paymentTotalPerYear();
+})
+
+
 // Order Query
 document.getElementById("orderStatus_btn").addEventListener("click", function() {
     Order.orderStatus_title();
