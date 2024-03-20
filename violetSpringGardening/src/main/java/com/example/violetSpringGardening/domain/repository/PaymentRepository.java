@@ -8,25 +8,28 @@ import java.util.List;
 
 public interface PaymentRepository extends JpaRepository <Payment, Long> {
 
-    //Devuelve un listado con todas las formas de pago que aparecen en la tabla pago. Tenga en cuenta que no deben aparecer formas de pago repetidas.
+    // Devuelve un listado con todas las formas de pago que aparecen en la tabla pago. Tenga en cuenta que no deben aparecer formas de pago repetidas.
     List<Payment> findAllDistinctByPaymentMethodLikeIgnoreCase(String payment);//objeto completo
 
-    //Devuelve un listado con todos los pagos que se realizaron en un año especifico mediante un metodo de pago especifico. Ordene el resultado de mayor a menor.
+
+    //Devuelve un listado con todos los pagos que se realizaron en un año específico mediante un método de pago específico. Ordene el resultado de mayor a menor.
     @Query("SELECT p.customer.customerCode , p.paymentMethod, p.transactionId, p.paymentDate, p.total FROM Payment p WHERE LOWER(p.paymentMethod) = LOWER(?1) AND YEAR(p.paymentDate) = ?2 ORDER BY p.total")
     List<Object> findPaymentsYearMethod(String method, String year);
 
-    //Devuelve un listado con el código de cliente de aquellos clientes que realizaron algún pago en un año especifico. Tenga en cuenta que deberá eliminar aquellos códigos de cliente que aparezcan repetidos
+
+    // Devuelve un listado con el código de cliente de aquellos clientes que realizaron algún pago en un año especifico. Tenga en cuenta que deberá eliminar aquellos códigos de cliente que aparezcan repetidos
     @Query("SELECT DISTINCT p.customer.customerCode FROM Payment p WHERE YEAR(p.paymentDate) = ?1")
     List<Object> findClientCodesPaymentYear(String year);
 
 
-    //3. ¿Cuál fue el pago medio en un año específico?
+    // ¿Cuál fue el pago medio en un año específico?
     @Query("SELECT AVG(p.total) " +
             "FROM Payment p " +
             "WHERE YEAR(p.paymentDate) = :year")
     List<Object> averagePaymentByYear(String year);
 
-    //Calcula la fecha del primer y último pago realizado por cada uno de los clientes. El listado deberá mostrar el nombre y los apellidos de cada cliente.
+
+    // Calcula la fecha del primer y último pago realizado por cada uno de los clientes. El listado deberá mostrar el nombre y los apellidos de cada cliente.
     @Query("SELECT c.customerName, c.contactName, c.contactLastName, MIN(p.paymentDate), MAX(p.paymentDate) " +
             "FROM Customer c " +
             "LEFT JOIN c.payments p " +
@@ -34,7 +37,7 @@ public interface PaymentRepository extends JpaRepository <Payment, Long> {
     List<Object> paymentsByCustomer();
 
 
-    //La facturación que ha tenido la empresa en toda la historia,
+    // La facturación que ha tenido la empresa en toda la historia,
     // indicando la base imponible, el IVA y el total facturado.
     // La base imponible se calcula sumando el coste del producto por el número de unidades vendidas de la tabla detalle_pedido.
     // El IVA es el 21 % de la base imponible, y el total la suma de los dos campos anteriores.
@@ -45,7 +48,8 @@ public interface PaymentRepository extends JpaRepository <Payment, Long> {
             "JOIN od.product p")
     List<Object> bussinessInvoicing();
 
-    //La misma información que en la pregunta anterior, pero agrupada por código de producto.
+
+    // La misma información que en la pregunta anterior, pero agrupada por código de producto.
     @Query("SELECT p.productCode, " +
             "       SUM(od.quantity * p.salePrice) AS tax, " +
             "       SUM(od.quantity * p.salePrice) * 0.21 AS iva, " +
@@ -55,7 +59,8 @@ public interface PaymentRepository extends JpaRepository <Payment, Long> {
             "GROUP BY p.productCode")
     List<Object> bussinessInvoicingPerProduct();
 
-    //La misma información que en la pregunta anterior, pero agrupada por código de producto filtrada por los códigos que empiecen por `OR`.
+
+    // La misma información que en la pregunta anterior, pero agrupada por código de producto filtrada por los códigos que empiecen por `OR`.
     @Query("SELECT p.productCode, " +
             "       SUM(od.quantity * p.salePrice) AS tax, " +
             "       SUM(od.quantity * p.salePrice) * 0.21 AS iva, " +
@@ -66,7 +71,8 @@ public interface PaymentRepository extends JpaRepository <Payment, Long> {
             "GROUP BY p.productCode")
     List<Object> bussinessInvoicingByProductCode(String startsWith);
 
-    //Muestre la suma total de todos los pagos que se realizaron para cada uno de los años que aparecen en la tabla pagos
+
+    // Muestre la suma total de todos los pagos que se realizaron para cada uno de los años que aparecen en la tabla pagos
     @Query("SELECT YEAR(p.paymentDate), SUM(p.total) " +
             "FROM Payment p " +
             "GROUP BY YEAR(p.paymentDate)")

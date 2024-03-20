@@ -11,11 +11,13 @@ public interface OfficeRepository extends JpaRepository <Office, Long> {
     // Devuelve un listado con la ciudad y el teléfono de las oficinas de España.
     List<Office> findAllByCountryLikeIgnoreCase(String country); //objeto completo
 
+
     // Devuelve un listado con el código de oficina y la ciudad donde hay oficinas.
     @Query("SELECT o.officeCode, o.city FROM Office o")
     List<Object> findOfficeCodesAndCities();
 
-    //6. Lista la dirección de las oficinas que tengan clientes en una ciudad especifica
+
+    // Lista la dirección de las oficinas que tengan clientes en una ciudad específica
     @Query("SELECT DISTINCT o.addressLine1, o.addressLine2, o.city, o.region, o.country, o.zipCode " +
             "FROM Office o " +
             "JOIN o.employees e " +
@@ -35,4 +37,5 @@ public interface OfficeRepository extends JpaRepository <Office, Long> {
 //            "JOIN Product prod ON od.product.productCode = prod.productCode " +
 //            "WHERE prod.productRange.range != :productRange")
 //    List<Object> officesWithoutSalesRepByRange(String productRange);
+
 }
