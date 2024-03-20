@@ -29,6 +29,6 @@ public interface OrderRepository extends JpaRepository <Order, Long> {
             "FROM Order o " +
             "GROUP BY o.status " +
             "ORDER BY COUNT(o) DESC")
-    List<Object> orderByCity();
+    List<Object> orderByStatus();
 
 }

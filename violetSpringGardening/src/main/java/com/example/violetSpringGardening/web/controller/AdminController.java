@@ -3,8 +3,10 @@ package com.example.violetSpringGardening.web.controller;
 
 import com.example.violetSpringGardening.domain.service.AdminInterfaceImpl;
 import com.example.violetSpringGardening.persistence.entity.Admin;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "http://127.0.0.1:5500")
 @RequestMapping("/register")
+
 public class AdminController {
     private final AdminInterfaceImpl adminInterfaceImpl;
 

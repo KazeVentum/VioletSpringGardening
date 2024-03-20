@@ -2,7 +2,9 @@ package com.example.violetSpringGardening.web.controller;
 
 import com.example.violetSpringGardening.domain.service.CustomerServiceImpl;
 import com.example.violetSpringGardening.persistence.entity.Customer;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,6 +12,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/violetspring")
 @CrossOrigin("http://localhost:8080")
+@PreAuthorize("hasRole('ADMIN')")
+@SecurityRequirement(name = "bearerAuth")
 public class CustomerController {
     private final CustomerServiceImpl customerService;
 
