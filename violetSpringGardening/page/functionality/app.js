@@ -64,6 +64,27 @@ document.getElementById("customersPerCountry_btn").addEventListener("click", fun
     Customer.customersPerCountry();
 });
 
+document.getElementById("CountByCityLikeIgnoreCase_btn").addEventListener("click", function() {
+    Customer.CountByCityLikeIgnoreCase_form();
+    Customer.CountByCityLikeIgnoreCase_title();
+    document.getElementById("searchCityByName_btn").addEventListener("click", function() {
+        Customer.CountByCityLikeIgnoreCase();
+    })
+})
+
+document.getElementById("countCustomers_btn").addEventListener("click", function() {
+    Customer.countCustomers_title();
+    Customer.countCustomers();
+});
+
+document.getElementById("totalCustomersByCity_btn").addEventListener("click", function() {
+    Customer.totalCustomersByCity_form();
+    Customer.totalCustomersByCity_title();
+    document.getElementById("searchTotalCustomersByName_btn").addEventListener("click", function() {
+        Customer.totalCustomersByCity();
+    })
+})
+
 
 // EMPLOYEE QUERIES
 document.getElementById("employeesWithTheirBoss_btn").addEventListener("click", function() {

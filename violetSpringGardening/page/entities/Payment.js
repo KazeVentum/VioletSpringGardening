@@ -36,10 +36,9 @@ export function averagePaymentByYear() {
     .then(data => {
         const clientCardsContainer = document.getElementById('showData');
         let html = '';
-
+    
         if (data[0] === null) {
-            console.log(data[0]);
-        	console.error("Error, The query has no data as a response.");
+            console.error("Error, The query has no data as a response.");
             html += `
             <div class="message">
                 <p>Sorry, there is no data available to display.</p>
@@ -61,8 +60,9 @@ export function averagePaymentByYear() {
                     </div>
                 `;
             });
-            clientCardsContainer.innerHTML = html;
         }
+        clientCardsContainer.innerHTML = html;
+        
     })
     .catch(error => console.error('Error:', error));
 }
