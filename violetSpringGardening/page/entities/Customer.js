@@ -699,7 +699,7 @@ export function totalCustomersByCity() {
 							</svg></h1>
 								<h2>${City}</h2>
 								<br>
-								<h1>Quantity of Customers:</h1>
+								<h3>Quantity of Customers:</h3>
 							<li></li><span id="quantity" >${Quantity} Clients</span>  			
 						</div>
 					</div>
@@ -719,3 +719,41 @@ export function totalCustomersByCity_title() {
 	var dashboardTittle = document.getElementById("titleSection");
 	dashboardTittle.innerHTML = newTitle;
 }
+
+
+
+export function totalCustomersWithoutEmployee() {
+    const token = sessionStorage.getItem('jwtToken'); 
+    fetch('http://localhost:8080/api/violetspring/totalCustomersWithoutEmployee', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+		console.log(data);
+		const clientCardsContainer = document.getElementById('showData');
+		let html = '';
+			html += `
+				<div class="card">
+					<div class="head">
+						<div>
+							<h1>Quantity of Customers:</h1>
+							<li></li><span id="quantity" >${data} Clients</span>        
+						</div>
+					</div>
+				</div>
+			`;
+		clientCardsContainer.innerHTML = html;
+	})		
+    .catch(error => console.error('Error:', error));
+}
+
+export function totalCustomersWithoutEmployee_title() {
+    var title = document.querySelector("#totalCustomersWithoutEmployee_btn a");
+	var newTitle = title.textContent;
+	var dashboardTittle = document.getElementById("titleSection");
+	dashboardTittle.innerHTML = newTitle;
+}
+

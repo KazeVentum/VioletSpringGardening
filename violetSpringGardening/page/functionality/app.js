@@ -84,6 +84,10 @@ document.getElementById("totalCustomersByCity_btn").addEventListener("click", fu
         Customer.totalCustomersByCity();
     })
 })
+document.getElementById("totalCustomersWithoutEmployee_btn").addEventListener("click", function() {
+    Customer.totalCustomersWithoutEmployee_title();
+    Customer.totalCustomersWithoutEmployee();
+});
 
 
 // EMPLOYEE QUERIES

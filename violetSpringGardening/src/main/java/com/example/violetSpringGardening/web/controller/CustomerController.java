@@ -58,16 +58,12 @@ public class CustomerController {
     @GetMapping("/customersPerCountry")
     public List<Object> customersPerCountry(){return customerService.customersPerCountry();}
 
-
-
-
     @GetMapping("/CountByCityLikeIgnoreCase")
     public long countByCityLikeIgnoreCase(@RequestParam String city){return customerService.countByCityLikeIgnoreCase(city);}
 
     @GetMapping("/countCustomers")
-    public long count(){return customerService.count();}
+    public long count(){return customerService.count();} 
 
-    // FALTAN
     @GetMapping("/totalCustomersByCity")
     public List<Object> totalCustomersByCity(@RequestParam String cityLetter){
         return customerService.totalCustomersByCity(cityLetter);
