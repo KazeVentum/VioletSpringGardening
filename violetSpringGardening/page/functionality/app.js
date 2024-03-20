@@ -2,6 +2,7 @@ import * as Employee from "../entities/Employee.js";
 import * as Customer from "../entities/Customer.js";
 import * as Office from "../entities/Office.js";
 import * as Payment from "../entities/Payment.js";
+import * as Order from "../entities/Order.js";
 
 // Customer Queries
 document.getElementById("customersWithSalesRep_btn").addEventListener("click", function() {
@@ -158,4 +159,28 @@ document.getElementById("averagePaymentByYear_btn").addEventListener("click", fu
     document.getElementById("searchYearName_btn").addEventListener("click", function() {
         Payment.averagePaymentByYear();
     })
+})
+
+// Order Query
+document.getElementById("orderStatus_btn").addEventListener("click", function() {
+    Order.orderStatus_title();
+    Order.orderStatus();
+})
+
+document.getElementById("lateOrders_btn").addEventListener("click", function() {
+    Order.lateOrders_title();
+    Order.lateOrders();
+})
+
+document.getElementById("ordersRejectedInYear_btn").addEventListener("click", function() {
+    Order.ordersRejectedInYear_form();
+    Order.ordersRejectedInYear_title();
+    document.getElementById("searchYearName_btn2").addEventListener("click", function() {
+        Order.ordersRejectedInYear();
+    })
+})
+
+document.getElementById("orderByStatus_btn").addEventListener("click", function() {
+    Order.orderByStatus_title();
+    Order.orderByStatus();
 })
