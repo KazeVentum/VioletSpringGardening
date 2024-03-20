@@ -126,6 +126,21 @@ document.getElementById("employeesWithoutCustomersBoss_btn").addEventListener("c
     Employee.employeesWithoutCustomersBoss();
 })
 
+document.getElementById("totalCustomersPerSalesRep_btn").addEventListener("click", function() {
+    Employee.totalCustomersPerSalesRep_title();
+    Employee.totalCustomersPerSalesRep();
+})
+
+document.getElementById("findCompanyBoss_btn").addEventListener("click", function() {
+    Employee.findCompanyBoss_title();
+    Employee.findCompanyBoss();
+})
+
+document.getElementById("countEmployees_btn").addEventListener("click", function() {
+    Employee.countEmployees_title();
+    Employee.countEmployees();
+})
+
 
 // Office Query
 document.getElementById("officesWithClientsInSpecificCity_btn").addEventListener("click", function() {

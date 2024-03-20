@@ -8,30 +8,11 @@ import java.util.List;
 
 public interface EmployeeRepository extends JpaRepository <Employee, Long> {
 
-    // ¿Cuántos empleados hay en la compañía?
-    long count();
-
-
-    // Devuelve un listado con el nombre, apellidos y puesto de aquellos empleados que no sean representantes de ventas.
-    List<Employee> findAllByChargeNotLike(String charge); //objeto completo
-
-
-    // Devuelve un listado con el nombre, apellidos y email de los empleados cuyo jefe tiene un código de jefe igual a 7.
-    @Query("SELECT e.name, e.lastName1, e.lastName2 FROM Employee e WHERE e.boss.employeeCode = :bossCode")
-    List<Object> findNameLastnameByBoss(int bossCode);
-
-
-    // Devuelve el nombre del puesto, nombre, apellidos y email del jefe de la empresa.
-    @Query("SELECT e.name, e.lastName1, e.lastName2, e.email, e.charge FROM Employee e WHERE e.boss.employeeCode IS NULL")
-    List<Object> findCompanyBoss();
-
-
     // Devuelve un listado con el nombre de los empleados junto con el nombre de sus jefes
     @Query("SELECT e.name AS nombreEmpleado, j.name AS nombreJefe " +
             "FROM Employee e " +
             "LEFT JOIN e.boss j")
     List<Object> employeesWithTheirBoss();
-
 
     // Devuelve un listado que muestre el nombre de cada empleados, el nombre de su jefe y el nombre del jefe de sus jefe.
     @Query("SELECT CONCAT(e.name, ' ', e.lastName1, ' ', e.lastName2) AS nombreEmpleado, " +
@@ -91,5 +72,27 @@ public interface EmployeeRepository extends JpaRepository <Employee, Long> {
             "LEFT JOIN e.customers c " +
             "GROUP BY e.name")
     List<Object> totalCustomersPerSalesRep();
+
+
+
+    // ¿Cuántos empleados hay en la compañía? // NO esta en controller
+    long count();
+
+
+    // Devuelve un listado con el nombre, apellidos y puesto de aquellos empleados que no sean representantes de ventas.
+    List<Employee> findAllByChargeNotLike(String charge); //objeto completo // NO esta en controller
+
+
+    // Devuelve un listado con el nombre, apellidos y email de los empleados cuyo jefe tiene un código de jefe igual a 7. NO esta en controller
+    @Query("SELECT e.name, e.lastName1, e.lastName2 FROM Employee e WHERE e.boss.employeeCode = :bossCode")
+    List<Object> findNameLastnameByBoss(int bossCode);
+
+
+    // Devuelve el nombre del puesto, nombre, apellidos y email del jefe de la empresa.
+    @Query("SELECT e.name, e.lastName1, e.lastName2, e.email, e.charge FROM Employee e WHERE e.boss.employeeCode IS NULL")
+    List<Object> findCompanyBoss();
+
+
+
 
 }

@@ -21,7 +21,7 @@ export function employeesWithTheirBoss() {
 						
 							<h1>Employee's name: <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-person-fill-gear" viewBox="0 0 16 16">
 							<path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4m9.886-3.54c.18-.613 1.048-.613 1.229 0l.043.148a.64.64 0 0 0 .921.382l.136-.074c.561-.306 1.175.308.87.869l-.075.136a.64.64 0 0 0 .382.92l.149.045c.612.18.612 1.048 0 1.229l-.15.043a.64.64 0 0 0-.38.921l.074.136c.305.561-.309 1.175-.87.87l-.136-.075a.64.64 0 0 0-.92.382l-.045.149c-.18.612-1.048.612-1.229 0l-.043-.15a.64.64 0 0 0-.921-.38l-.136.074c-.561.305-1.175-.309-.87-.87l.075-.136a.64.64 0 0 0-.382-.92l-.148-.045c-.613-.18-.613-1.048 0-1.229l.148-.043a.64.64 0 0 0 .382-.921l-.074-.136c-.306-.561.308-1.175.869-.87l.136.075a.64.64 0 0 0 .92-.382zM14 12.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0"/>
-						  </svg></h1> 
+						    </svg></h1> 
 							<h2>${employeeName}</h2>
 							<br>
 							<li><strong>Boss's name:</strong> ${bossName}</li>					
@@ -351,5 +351,137 @@ export function employeesWithoutCustomersBoss_title(){
 	var dashboardTittle = document.getElementById("titleSection");
 	dashboardTittle.innerHTML = newTitle;
 }
+
+export function totalCustomersPerSalesRep() {
+    const token = sessionStorage.getItem('jwtToken'); 
+    fetch('http://localhost:8080/api/violetspring/totalCustomersPerSalesRep', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+	const clientCardsContainer = document.getElementById('showData');
+	let html = '';
+	data.forEach(data => {
+		const Customer = data[0];
+		const quantity = data[1];
+
+		html += `
+                <div class="card">
+                <div class="head">
+                    <div>
+                        <h1>Customer: <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-building" viewBox="0 0 16 16"><path d="M4 2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM4 5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zM7.5 5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zM4.5 8a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z"/>
+                            <path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1zm11 0H3v14h3v-2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V15h3z"/>
+                        </svg></h1>
+                            <h2>${Customer}</h2>
+                            <br>
+                            <h3>Quantity of Customers:</h3>
+                        <li></li><span id="quantity" >${quantity} Clients</span>  			
+                    </div>
+                </div>
+            </div>
+		`;
+	});
+	clientCardsContainer.innerHTML = html;
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+export function totalCustomersPerSalesRep_title(){
+    var title = document.querySelector("#totalCustomersPerSalesRep_btn a");
+	var newTitle = title.textContent;
+	var dashboardTittle = document.getElementById("titleSection");
+	dashboardTittle.innerHTML = newTitle;
+}
+
+export function findCompanyBoss() {
+    const token = sessionStorage.getItem('jwtToken'); 
+    fetch('http://localhost:8080/api/violetspring/findCompanyBoss', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+	const clientCardsContainer = document.getElementById('showData');
+	let html = '';
+	data.forEach(data => {
+		const name = data[0];
+		const lastName = data[1];
+        const lastName2 = data[2];
+        const email = data[3];
+        const position = data[4];
+
+		html += `
+			<div class="card">
+				<div class="head">
+					<div>
+						<h1>Boss Company: <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-dash" viewBox="0 0 16 16">
+						<path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M11 12h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1m0-7a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+						<path d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z"/>
+					  </svg></h1>
+						<h2>${name} ${lastName} ${lastName2} </h2>
+						<br>
+						<h1>Office:</h1>
+						<ul>
+							<li><strong>Email:</strong> ${email}</li>
+							<li><strong>Company Position :</strong> ${position}</li>
+						</ul>				
+					</div>
+				</div>
+				</div>
+			</div>
+		`;
+	});
+	clientCardsContainer.innerHTML = html;
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+export function findCompanyBoss_title(){
+    var title = document.querySelector("#findCompanyBoss_btn a");
+	var newTitle = title.textContent;
+	var dashboardTittle = document.getElementById("titleSection");
+	dashboardTittle.innerHTML = newTitle;
+}
+
+export function countEmployees() {
+    const token = sessionStorage.getItem('jwtToken'); 
+    fetch('http://localhost:8080/api/violetspring/countEmployees', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+		console.log(data);
+		const clientCardsContainer = document.getElementById('showData');
+		let html = '';
+			html += `
+				<div class="card">
+					<div class="head">
+						<div>
+							<h1>Quantity of Employees:</h1>
+							<li></li><span id="quantity" >${data}</span>        
+						</div>
+					</div>
+				</div>
+			`;
+		clientCardsContainer.innerHTML = html;
+	})		
+    .catch(error => console.error('Error:', error));
+}
+
+export function countEmployees_title() {
+    var title = document.querySelector("#countEmployees_btn a");
+	var newTitle = title.textContent;
+	var dashboardTittle = document.getElementById("titleSection");
+	dashboardTittle.innerHTML = newTitle;
+}
+
 
 
