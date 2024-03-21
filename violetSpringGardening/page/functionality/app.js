@@ -172,6 +172,41 @@ document.getElementById("paymentTotalPerYear_btn").addEventListener("click", fun
     Payment.paymentTotalPerYear();
 })
 
+document.getElementById("bussinessInvoicing_btn").addEventListener("click", function() {
+    Payment.bussinessInvoicing_title();
+    Payment.bussinessInvoicing();
+})
+
+document.getElementById("bussinessInvoicingPerProduct_btn").addEventListener("click", function() {
+    Payment.bussinessInvoicingPerProduct_title();
+    Payment.bussinessInvoicingPerProduct();
+})
+
+document.getElementById("bussinessInvoicingByProductCode_btn").addEventListener("click", function() {
+    Payment.bussinessInvoicingByProductCode_form();
+    Payment.bussinessInvoicingByProductCode_title();
+    document.getElementById("searchYearCode_btn").addEventListener("click", function() {
+        Payment.bussinessInvoicingByProductCode();
+    })
+})
+
+document.getElementById("findPaymentsYearMethod_btn").addEventListener("click", function() {
+    Payment.findPaymentsYearMethod_form();
+    Payment.findPaymentsYearMethod_title();
+    document.getElementById("searchItems_btn").addEventListener("click", function() {
+        Payment.findPaymentsYearMethod();
+    })
+})
+
+document.getElementById("findClientCodesPaymentYear_btn").addEventListener("click", function() {
+    Payment.findClientCodesPaymentYear_form();
+    Payment.findClientCodesPaymentYear_title();
+    document.getElementById("searchYearCode_btn").addEventListener("click", function() {
+        Payment.findClientCodesPaymentYear();
+    })
+})
+
+
 
 // Order Query
 document.getElementById("orderStatus_btn").addEventListener("click", function() {
