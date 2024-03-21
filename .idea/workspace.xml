@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="19bfb7e6-3805-45ed-9319-aba042d93014" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/violetSpringGardening/page/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/violetSpringGardening/page/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/violetSpringGardening/page/entities/Product.js" beforeDir="false" afterPath="$PROJECT_DIR$/violetSpringGardening/page/entities/Product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/violetSpringGardening/page/functionality/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/violetSpringGardening/page/functionality/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/repository/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/service/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/domain/service/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/web/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/violetSpringGardening/src/main/java/com/example/violetSpringGardening/web/controller/ProductController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

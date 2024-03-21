@@ -3,6 +3,7 @@ import * as Customer from "../entities/Customer.js";
 import * as Office from "../entities/Office.js";
 import * as Payment from "../entities/Payment.js";
 import * as Order from "../entities/Order.js";
+import * as Product from "../entities/Product.js";
 
 // Customer Queries
 document.getElementById("customersWithSalesRep_btn").addEventListener("click", function() {
@@ -194,4 +195,78 @@ document.getElementById("ordersRejectedInYear_btn").addEventListener("click", fu
 document.getElementById("orderByStatus_btn").addEventListener("click", function() {
     Order.orderByStatus_title();
     Order.orderByStatus();
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Product Query
+document.getElementById("totalProductsByOrder_btn").addEventListener("click", function() {
+    Product.totalProductsByOrder_title();
+    Product.totalProductsByOrder();
+})
+document.getElementById("productsWithoutOrder_btn").addEventListener("click", function() {
+    Product.productsWithoutOrder_title();
+    Product.productsWithoutOrder();
+})
+document.getElementById("productsWithoutOrderDescription_btn").addEventListener("click", function() {
+    Product.productsWithoutOrderDescription_title();
+    Product.productsWithoutOrderDescription();
+})
+document.getElementById("varietyOfProductsInOrders_btn").addEventListener("click", function() {
+    Product.varietyOfProductsInOrders_title();
+    Product.varietyOfProductsInOrders();
+})
+document.getElementById("bestSellers_btn").addEventListener("click", function() {
+    Product.bestSellers_title();
+    Product.bestSellers();
 })

@@ -25,7 +25,7 @@ public class ProductServiceImpl implements ServiceInterface<Product>{
 
     public List<Object> productsWithoutOrder(){return productRepository.productsWithoutOrder();}
 
-    public List<Object> productsWithoutOrdersDescription(){return productRepository.productsWithoutOrdersDescription();}
+    public List<Object> productsWithoutOrderDescription(){return productRepository.productsWithoutOrderDescription();}
 
     //public List<Object> varietyOfProductsInOrders(){return productRepository.varietyOfProductsInOrders();}
 

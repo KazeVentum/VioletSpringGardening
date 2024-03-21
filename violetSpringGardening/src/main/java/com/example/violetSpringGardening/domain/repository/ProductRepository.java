@@ -9,12 +9,12 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository <Product, Long> {
 
     // Calcula la suma de la cantidad total de todos los productos que aparecen en cada uno de los pedidos.
-    @Query("SELECT SUM(od.quantity) FROM OrderDetail od GROUP BY od.order")
+    @Query("SELECT od.orderDetailId, SUM(od.quantity) FROM OrderDetail od GROUP BY od.orderDetailId")
     List<Object> totalProductsByOrder();
 
 
     // Devuelve un listado de los productos que nunca han aparecido en un pedido.
-    @Query("SELECT p " +
+    @Query("SELECT p.name " +
             "FROM Product p " +
             "WHERE NOT EXISTS (SELECT 1 FROM OrderDetail od WHERE od.product = p)")
     List<Object> productsWithoutOrder();
@@ -23,8 +23,8 @@ public interface ProductRepository extends JpaRepository <Product, Long> {
     // Devuelve un listado de los productos que nunca han aparecido en un pedido. El resultado debe mostrar el nombre, la descripción y la imagen del producto.
     @Query("SELECT p.name, p.description " +
             "FROM Product p " +
-            "WHERE p NOT IN (SELECT od.product FROM OrderDetail od)")
-    List<Object> productsWithoutOrdersDescription();
+            "WHERE NOT EXISTS (SELECT 1 FROM OrderDetail od WHERE od.product = p)")
+    List<Object> productsWithoutOrderDescription();
 
 
     // Calcula el número de productos diferentes que hay en cada uno de los pedidos.
