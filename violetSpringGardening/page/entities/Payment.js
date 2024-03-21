@@ -147,7 +147,6 @@ export function paymentsByCustomer_title() {
 }
 
 
-
 export function paymentTotalPerYear() {
     const token = sessionStorage.getItem('jwtToken'); 
     fetch('http://localhost:8080/api/violetspring/paymentTotalPerYear', {
@@ -158,7 +157,6 @@ export function paymentTotalPerYear() {
     })
     .then(response => response.json())
     .then(data => {
-		console.log(data);
 		const clientCardsContainer = document.getElementById('showData');
 		let html = '';
 		data.forEach(request => {
@@ -186,7 +184,6 @@ export function paymentTotalPerYear() {
     .catch(error => console.error('Error:', error));
 }
 
-
 export function paymentTotalPerYear_title() {
     var title = document.querySelector("#paymentTotalPerYear_btn a");
 	var newTitle = title.textContent;
@@ -195,3 +192,359 @@ export function paymentTotalPerYear_title() {
 }
 
 
+export function bussinessInvoicing() {
+    const token = sessionStorage.getItem('jwtToken'); 
+    fetch('http://localhost:8080/api/violetspring/bussinessInvoicing', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        const tax = data[0][0];
+        const iva0_21 = data[0][1];
+        const total = data[0][2];
+
+		const clientCardsContainer = document.getElementById('showData');
+		let html = '';
+			html += `
+				<div class="card">
+					<div class="head">
+						<div>
+							<h1>Taxes:</h1>
+                            <li></li><span id="quantity" >$ ${tax.toLocaleString(undefined, {minimumFractionDigits: 0})}</span>        
+						</div>
+					</div>
+				</div>
+
+                <div class="card">
+                    <div class="head">
+                        <div>
+                            <h1>IVA 0.21:</h1>
+                            <li><span id="quantity" >$ ${iva0_21.toLocaleString(undefined, {minimumFractionDigits: 0})}</span></li>    
+						</div>        
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="head">
+                        <div>
+                            <h1>Total Invoicing:</h1>
+                            <li><span id="quantity" >$ ${total.toLocaleString(undefined, {minimumFractionDigits: 0})}</span></li>        
+                        </div>
+                    </div>
+                </div>
+			`;
+
+		clientCardsContainer.innerHTML = html;
+	})		
+    .catch(error => console.error('Error:', error));
+}
+
+export function bussinessInvoicing_title() {
+    var title = document.querySelector("#bussinessInvoicing_btn a");
+	var newTitle = title.textContent;
+	var dashboardTittle = document.getElementById("titleSection");
+	dashboardTittle.innerHTML = newTitle;
+}
+
+
+export function bussinessInvoicingPerProduct() {
+	const token = sessionStorage.getItem('jwtToken'); 
+	fetch('http://localhost:8080/api/violetspring/bussinessInvoicingPerProduct', {
+		method: 'GET',
+		headers: {
+			'Authorization': `Bearer ${token}`
+		}
+		})
+	.then(response => response.json())
+	.then(data => {
+	
+		const clientCardsContainer = document.getElementById('showData');
+		let html = '';
+		data.forEach(data => {
+            const code = data[0];
+            const tax = data[1];
+            const iva0_21 = data[2];
+            const total = data[3];
+			html += `
+                    <div class="card">
+                    <div class="head">
+                        <div>
+                            <h1>Product: ${code}</h1>
+                            <li><strong>Taxes</strong>: $ ${tax.toLocaleString(undefined, {minimumFractionDigits: 0})}</li>
+                            <li><strong>IVA: 0.21</strong>: $ ${iva0_21.toLocaleString(undefined, {minimumFractionDigits: 0})}</li>
+                            <li></li><span id="quantity">$ ${total.toLocaleString(undefined, {minimumFractionDigits: 0})}</span>        
+                        </div>
+                    </div>
+                </div>
+			`;
+		});
+		clientCardsContainer.innerHTML = html;
+    })
+	.catch(error => console.error('Error:', error));
+}
+
+export function bussinessInvoicingPerProduct_title() {
+    var title = document.querySelector("#bussinessInvoicingPerProduct_btn a");
+	var newTitle = title.textContent;
+	var dashboardTittle = document.getElementById("titleSection");
+	dashboardTittle.innerHTML = newTitle;
+}
+
+
+export function bussinessInvoicingByProductCode_form(){
+    const clientCardsContainer = document.getElementById('showData');
+    let html = '';
+        html += `
+            <div class="card">
+                <div class="head">
+                    <div>
+                        <h1>Enter the code:</h1>
+                        <input class="controlsTwo" type="text" class="form-control" id="inputYear" placeholder="eg: OR-99">
+                        <br>
+                        <div id="buttom">
+                            <button class="btn-formulary" id="searchYearCode_btn">Send</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        `;
+    clientCardsContainer.innerHTML = html;
+}
+
+export function bussinessInvoicingByProductCode() {
+    const token = sessionStorage.getItem('jwtToken'); 
+    const FormCode = document.getElementById('inputYear')
+    const codeUser = FormCode.value;
+
+
+    fetch('http://localhost:8080/api/violetspring/bussinessInvoicingByProductCode?startsWith=' + codeUser, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        const clientCardsContainer = document.getElementById('showData');
+        let html = '';
+    
+        if (data.length === 0) {
+            console.error("Error, The query has no data as a response.");
+            html += `
+            <div class="message">
+                <p>Sorry, we don't have data for that Code.<br> Try Again </p>
+                <div class="img-Error">
+                    <img src="../src/main/resources/404.jpg" alt="404 bad request image">
+                </div>
+            </div>
+            `;
+        } else {
+                const code = data[0][0];
+                const tax = data[0][1];
+                const iva0_21 = data[0][2];
+                const total = data[0][3];
+
+                html += `
+                        <div class="card">
+                        <div class="head">
+                            <div>
+                                <h1>Product:</h1>
+                                <li></li><span id="quantity">$ ${code.toLocaleString(undefined, {minimumFractionDigits: 0})}</span> 
+                                <li><strong>Taxes</strong>: $ ${tax.toLocaleString(undefined, {minimumFractionDigits: 0})}</li>
+                                <li><strong>IVA 0.21</strong>: $ ${iva0_21.toLocaleString(undefined, {minimumFractionDigits: 0})}</li>
+                                <li><strong>Total: </strong></li><span id="quantity">$ ${total.toLocaleString(undefined, {minimumFractionDigits: 0})}</span>        
+                            </div>
+                        </div>
+                    </div>
+                `;
+        }
+        clientCardsContainer.innerHTML = html;
+        
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+export function bussinessInvoicingByProductCode_title(){
+    var title = document.querySelector("#averagePaymentByYear_btn a");
+    var newTitle = title.textContent;
+    var dashboardTitle = document.getElementById("titleSection");
+    dashboardTitle.innerHTML = newTitle;
+}
+
+
+export function findPaymentsYearMethod_form(){
+    const clientCardsContainer = document.getElementById('showData');
+    let html = '';
+        html += `
+            <div class="card">
+                <div class="head">
+                    <div>
+                        <h1>Find by Payment Method:</h1>
+                        <br>
+                        <label for="text">Payment Method</label>
+                        <input class="controlsTwo" type="text" class="form-control" id="inputPaymentMethod" placeholder="eg: Paypal">
+                        <br>
+                        <label for="text">Year</label>
+                            <input class="controlsTwo" type="text" class="form-control" id="inputYear" placeholder="eg: 2009">
+                        <br>
+                        <div id="buttom">
+                            <button class="btn-formulary" id="searchItems_btn">Send</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        `;
+    clientCardsContainer.innerHTML = html;
+}
+
+export function findPaymentsYearMethod() {
+    const token = sessionStorage.getItem('jwtToken'); 
+    const FormMethod = document.getElementById('inputPaymentMethod')
+    const FormYear = document.getElementById('inputYear')
+
+    const method = FormMethod.value;
+    const year = FormYear.value;
+
+
+    fetch('http://localhost:8080/api/violetspring/findPaymentsYearMethod?method=' + method + '&year=' + year, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        const clientCardsContainer = document.getElementById('showData');
+        let html = '';
+    
+        if (data.length === 0 ) {
+            console.error("Error, The query has no data as a response.");
+            html += `
+            <div class="message">
+                <p>Sorry, we don't have data for that year or Payment Method.<br> Try Again </p>
+                <div class="img-Error">
+                    <img src="../src/main/resources/404.jpg" alt="404 bad request image">
+                </div>
+            </div>
+            `;
+        } else {
+                
+                data.forEach(data => {
+                    const method = data[1];
+                    const ID = data[2];
+                    const date = data[3];
+                    const total = data[4];
+
+                    html += `
+                    <div class="card">
+                        <div class="head">
+                            <div>
+                                <h1>Information:</h1>
+                                <br>
+                                <li><strong>Payment Method</strong>: ${method}</li>
+                                <li><strong>ID Payment</strong>: ${ID}</li>
+                                <li><strong>Date</strong>:  ${date}</li>
+                                <li><strong>Total: </strong></li><span id="quantity">$ ${total.toLocaleString(undefined, {minimumFractionDigits: 0})}</span>        
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                });
+
+        }
+        clientCardsContainer.innerHTML = html;
+        
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+export function findPaymentsYearMethod_title(){
+    var title = document.querySelector("#findPaymentsYearMethod_btn a");
+    var newTitle = title.textContent;
+    var dashboardTitle = document.getElementById("titleSection");
+    dashboardTitle.innerHTML = newTitle;
+}
+
+
+export function findClientCodesPaymentYear_form(){
+    const clientCardsContainer = document.getElementById('showData');
+    let html = '';
+        html += `
+            <div class="card">
+                <div class="head">
+                    <div>
+                        <h1>Enter the code:</h1>
+                        <input class="controlsTwo" type="text" class="form-control" id="inputYear" placeholder="eg: 2008">
+                        <br>
+                        <div id="buttom">
+                            <button class="btn-formulary" id="searchYearCode_btn">Send</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        `;
+    clientCardsContainer.innerHTML = html;
+}
+
+export function findClientCodesPaymentYear() {
+    const token = sessionStorage.getItem('jwtToken'); 
+    const FormYear = document.getElementById('inputYear')
+    const yearUser = FormYear.value;
+
+
+    fetch('http://localhost:8080/api/violetspring/findClientCodesPaymentYear?year=' + yearUser, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        const clientCardsContainer = document.getElementById('showData');
+        let html = '';
+    
+        if (data.length == 0) {
+            console.error("Error, The query has no data as a response.");
+            html += `
+            <div class="message">
+                <p>Sorry, we don't have data for that year.<br> Try Again </p>
+                <div class="img-Error">
+                    <img src="../src/main/resources/404.jpg" alt="404 bad request image">
+                </div>
+            </div>
+            `;
+            clientCardsContainer.innerHTML = html;
+        } else {
+            data.forEach(code => {
+                html += `
+                        <div class="card">
+                            <div class="head">
+                                <div>
+                                    <h1>Client Code:</h1>
+                                    <li></li><span id="quantity">${code}</span>        
+                                </div>
+                            </div>
+                        </div>
+                `;
+                clientCardsContainer.innerHTML = html;
+            });
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+export function findClientCodesPaymentYear_title(){
+    var title = document.querySelector("#findClientCodesPaymentYear_btn a");
+    var newTitle = title.textContent;
+    var dashboardTitle = document.getElementById("titleSection");
+    dashboardTitle.innerHTML = newTitle;
+}
