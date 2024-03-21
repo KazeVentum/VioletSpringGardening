@@ -92,3 +92,64 @@ export function officesWithClientsInSpecificCity_title(){
     var dashboardTitle = document.getElementById("titleSection");
     dashboardTitle.innerHTML = newTitle;
 }
+
+
+
+
+
+export function findOfficeCodesAndCities_title(){
+    var title = document.querySelector("#findOfficeCodesAndCities_btn a");
+    var newTitle = title.textContent;
+    var dashboardTitle = document.getElementById("titleSection");
+    dashboardTitle.innerHTML = newTitle;
+}
+
+export function findOfficeCodesAndCities() {
+    const token = sessionStorage.getItem('jwtToken'); 
+    fetch('http://localhost:8080/api/violetspring/findOfficeCodesAndCities', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+	
+		const officeCardsContainer = document.getElementById('showData');
+		let html = '';
+
+        if (data[0] === null) {
+            console.error("Error, The query has no data as a response.");
+            html += `
+            <div class="message">
+                <p>Sorry, there is no data available to display.</p>
+                <div class="img-Error">
+                    <img src="../src/main/resources/404.jpg" alt="404 bad request image">
+                </div>
+            </div>
+            `;
+        } else {
+            data.forEach(data => {
+                const officeCode = data[0];
+                const city = data[1];
+
+        
+                html += `
+                    <div class="card">
+                        <div class="head">
+                            <div>
+                                <h1>Office code:</h1>
+                                <h2>${officeCode}</h2>
+                                <br>
+                                <li><strong>City:</strong> ${city}</li>			
+		
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                `;
+            });
+            officeCardsContainer.innerHTML = html;
+}})
+    .catch(error => console.error('Error:', error));
+}

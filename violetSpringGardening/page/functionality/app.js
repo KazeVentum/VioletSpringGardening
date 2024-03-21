@@ -153,6 +153,11 @@ document.getElementById("officesWithClientsInSpecificCity_btn").addEventListener
     })
 })
 
+document.getElementById("findOfficeCodesAndCities_btn").addEventListener("click", function() {
+    Office.findOfficeCodesAndCities_title();
+    Office.findOfficeCodesAndCities();
+})
+
 // Payment Query
 document.getElementById("averagePaymentByYear_btn").addEventListener("click", function() {
     Payment.averagePaymentByYear_form();
