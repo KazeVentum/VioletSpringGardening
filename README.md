@@ -84,7 +84,7 @@ Welcome to the documentation for VioletSpring API - the API for Gardening, a gar
 
   - **Dashboard**
 
-    ![LoginMiro](/violetSpringGardening/src/main/resources/readme/inicio.png)
+    ![DashBoardMiro](/violetSpringGardening/src/main/resources/readme/Inicio.png)
 
 ---
 
